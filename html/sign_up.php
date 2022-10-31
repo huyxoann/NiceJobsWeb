@@ -1,11 +1,10 @@
 <?php
 include 'connection.php';
-if(isset($_POST['register']))
-{
-    $username = mysqli_real_escape_string($conn,$_POST['username']);
-    $password = mysqli_real_escape_string($conn,$_POST['password']) ;
-    $re_password = mysqli_real_escape_string($conn,$_POST['re_password']);
-    $email =mysqli_real_escape_string($conn,$_POST['email']) ;
+if (isset($_POST['register'])) {
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $re_password = mysqli_real_escape_string($conn, $_POST['re_password']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
     // $passs = md5($pass);
 
     //check if username already registered
@@ -18,7 +17,7 @@ if(isset($_POST['register']))
     } else {
         //check $pass == $cpass
         if ($password == $re_password) {
-           $sql = "INSERT INTO `users`(  `username`, `password`,  `phone`, `email`)
+            $sql = "INSERT INTO `users`(  `username`, `password`,  `phone`, `email`)
                                  VALUES ('$username','$password','$email')";
             $query = mysqli_query($conn, $sql);
 
@@ -69,8 +68,8 @@ if(isset($_POST['register']))
             var e2 = document.getElementById('error2');
             var e3 = document.getElementById('error3');
             var e4 = document.getElementById('error4');
-            
-            
+
+
             if (a == "") {
                 e1.innerHTML = "*Vui lòng nhập Tên";
             }
@@ -91,14 +90,14 @@ if(isset($_POST['register']))
                 <a href="file:///D:/DoAnCoSo/HTML/trangChu.html">
                     <img src="../Images/logoedited-none-background.png" id="a2">
                 </a>
-                <form  method="post">
+                <form method="post">
                     <h2 style="text-align: center;margin: 0 auto;padding-top: 15px;" id="dn">Đăng Ký</h2>
-                    
-                 
+
+
                     <div class="form-group">
                         <div><span id="error4" class="error"></span></div>
                         <label>Username </label>
-                        <input id="username"name="username" type="text" required class="form-control" placeholder="Username của bạn">
+                        <input id="username" name="username" type="text" required class="form-control" placeholder="Username của bạn">
                         <span class="show-btn"><i class="fas fa-eye"></i></span>
                     </div>
 
