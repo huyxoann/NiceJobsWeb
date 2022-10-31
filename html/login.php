@@ -90,7 +90,7 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
                         </div>
 
                         <p>Nếu bạn chưa có tài khoản?</p>
-                        <a style="text-decoration: none;" href="file:///D:/DoAnCoSo/HTML/sign-up.html">
+                        <a style="text-decoration: none;" href="../html/sign_up.php">
                             <p>Đăng ký ngay</p>
                         </a>
                         <a href="file:///D:/DoAnCoSo/HTML/forget-password.html" style="text-decoration: none;">

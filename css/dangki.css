@@ -18,7 +18,9 @@
 #a2 {
     margin-top: 10px;
 }
-
+.col-md-6{
+    padding-left: 12px;
+}
 form div {
     margin-bottom: 10px;
 }

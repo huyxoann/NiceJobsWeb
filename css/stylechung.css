@@ -36,7 +36,6 @@ a {
     text-decoration: none;
     color: #222831;
 }
-
 ul {
     list-style-type: none;
 }
@@ -159,6 +158,18 @@ ul {
     border-color: #2D31FA;
 }
 
+#menu-hidden {
+    display: none;
+    width: 70px;
+}
+
+#menu-hidden img {
+    margin: auto;
+    width: 70px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
 .footer {
     background-color: #f9f9f9;
 }
@@ -193,20 +204,94 @@ ul {
 }
 
 
-/*Mobile: width < 740px*/
+/*Mobile: */
 
-@media only screen and(max-width: 46.1875) {}
+@media(max-width: 425px) {
+    /* #menuChoose{
+        display: none;
+    } */
+}
 
 
-/*Tablet: width >= 740px and width < 1024px*/
+/*Tablet: */
 
-@media only screen and(min-width: 46.25em)and(max-width: 63.9375em) {}
+@media(min-width: 425px) and (max-width: 1024px) {
+    .jobs-content {
+        padding-left: 20% !important;
+    }
+    .search-form {
+        flex-direction: column;
+    }
+    /* .menu-hidden, #menuChoose{
+        display: none;
+    } */
+}
 
 
 /*Both */
 
-@media only screen and(max-width: 63.9375em) {
+@media(max-width: 1024px) {
     #menu {
+        display: none;
+    }
+    .button-header {
+        display: none;
+    }
+    #logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .header-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+    }
+    #menu-hidden {
+        display: block;
+        width: 70px;
+    }
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+    }
+    #menuChoose {
+        width: 100%;
+        text-align: center;
+        font-size: 25px;
+    }
+    #menuChoose ul {
+        border-radius: 7px;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+    #menuChoose ul li {
+        height: 50px;
+        padding: 10px 0 10px 0;
+    }
+    #menuChoose ul li:first-child {
+        margin-top: 20px;
+    }
+    #menuChoose ul li:hover {
+        background-color: #E8F9FD;
+        color: #688adf;
+        transition: all 0.3s ease-in-out;
+    }
+    .buttonHiden {
+        width: 80%;
+        height: 70px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+        background-color: #688adf;
+    }
+    .hoso-cv img {
+        display: none;
+    }
+}
+@media(min-width: 1025px) {
+    #menu-hidden, #menuChoose{
         display: none;
     }
 }
