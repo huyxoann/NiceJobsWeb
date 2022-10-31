@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,62 +51,36 @@
                 <a href="file:///D:/DoAnCoSo/HTML/trangChu.html">
                     <img src="../Images/logoedited-none-background.png" id="a2">
                 </a>
-                <form>
+                <form  method="post">
                     <h2 style="text-align: center;margin: 0 auto;padding-top: 15px;" id="dn">Đăng Ký</h2>
+                    
+                 
                     <div class="form-group">
-                        <div class="form-row">
-                            <div><span id="error1" class="error"></span></div>
-                            <div class="col">
-                                <label>Họ và Tên *</label>
-                                <input id="firstName" type="text " required class="form-control" placeholder="Tên của bạn">
-                            </div>
-                            <!-- <div><span id="error2" class="error"></span></div>
-                            <div class="col">
-                                <label>Họ *</label>
-                                <input id="lastName" type="text " required class="form-control" placeholder="Họ của bạn">
-                            </div> -->
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div><span id="error3" class="error"></span></div>
-                        <label>Email *</label>
-                        <input id="email" type="email" required class="form-control" placeholder="Email của bạn">
-
+                        <div><span id="error4" class="error"></span></div>
+                        <label>Username </label>
+                        <input id="username"name="username" type="text" required class="form-control" placeholder="Username của bạn">
+                        <span class="show-btn"><i class="fas fa-eye"></i></span>
                     </div>
 
                     <div class="form-group">
                         <div><span id="error4" class="error"></span></div>
                         <label>Password *</label>
-                        <input id="password" type="password" required class="form-control" placeholder="Password của bạn">
+                        <input id="password" name="password" type="password" required class="form-control" placeholder="Password của bạn">
                         <span class="show-btn"><i class="fas fa-eye"></i></span>
                     </div>
 
                     <div class="form-group">
                         <div><span id="error4" class="error"></span></div>
                         <label>Re-Password *</label>
-                        <input id="password" type="password" required class="form-control" placeholder="Nhập lại Password">
+                        <input id="password" name="re-password" type="password" required class="form-control" placeholder="Nhập lại Password">
                         <span class="show-btn"><i class="fas fa-eye"></i></span>
                     </div>
 
                     <div class="form-group">
-                        <label>Nơi sống</label>
-                        <select class="form-control">
-                            <option selected >Nơi sống của bạn</option>
-                            <option >TPHCM</option>
-                            <option >HN</option>
-                            <option >DN</option>
-                            <option>khác</option>
+                        <div><span id="error3" class="error"></span></div>
+                        <label>Email *</label>
+                        <input id="email" name="email" type="email" required class="form-control" placeholder="Email của bạn">
 
-                        </select>
-                    </div>
-                    <label>Giới tính</label>
-                    <select class="form-control">
-                        <option selected>Giới tính của bạn</option>
-                        <option >Nam</option>
-                        <option >Nữ</option>
-                    </select>
-                    <div class="form-group">
                     </div>
 
                     <div class="form-group">
