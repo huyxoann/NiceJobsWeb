@@ -1,6 +1,5 @@
 <?php
 require('connection.php');
-include('connection.php');
 if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
     header("location:trangchu.php");
 } else {
@@ -50,7 +49,7 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
             }
         }
     </script>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
                 <a href="file:///D:/DoAnCoSo/HTML/trangChu.html">
