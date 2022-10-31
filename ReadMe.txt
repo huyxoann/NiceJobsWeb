@@ -1,0 +1,1 @@
+Đặt folder này vào ổ đĩa D://
