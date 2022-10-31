@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sach cac công ty</title>
+    <link rel="stylesheet" href="../CSS/bootstrap-5.1.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../CSS/danhsachcongty.css">
+    <link rel="stylesheet" href="../CSS/stylechung.css">
+</head>
+
+<body>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../CSS/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+
+    <div class="container-fluid shadow-sm rounded row header-content mb-1">
+        <div class="col-mb-3 mt-2 ps-4 col-sm" id="logo">
+            <a href="file:///D:/DoAnCoSo/HTML/trangChu.html" class="">
+                <img src="../Images/logoedited.png " alt="logo ">
+            </a>
+        </div>
+        <div class="col-md-7 mt-3 col-sm" id="menu">
+            <ul class="nav">
+                <li class="nav-item ">
+                    <a href="file:///D:/DoAnCoSo/HTML/thongtinweb.html" class="nav-link ">Về chúng tôi</a>
+                </li>
+                <li class="nav-item ">
+                    <a href="file:///D:/DoAnCoSo/HTML/vieclam.html" class="nav-link ">Việc làm</a>
+                </li>
+                <li class="nav-item" id="menu-cty">
+                    <a href="#" class="nav-link disabled">Công ty</a>
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="file:///D:/DoAnCoSo/HTML/danh-sach-cac-cong-ty.html" class="nav-link">Danh sách công ty</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="file:///D:/DoAnCoSo/HTML/top-cong-ty.html" class="nav-link">Top công ty</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item ">
+                    <a href="file:///D:/DoAnCoSo/HTML/mau-cv.html" class="nav-link ">Hồ Sơ CV</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-md-2 mt-3 justify-content-end button-header">
+            <button type="button" class="btn btn-outline-primary me-2"><a href="file:///D:/DoAnCoSo/HTML/sign-up.html" style="color: #2A5DDE;">Đăng ký</a></button>
+            <button type="button" class="btn btn-primary me-2 "><a href="file:///D:/DoAnCoSo/HTML/login.html" style="color: #f9f9f9;">Đăng nhập</a></button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Home</li>
+                    <li class="breadcrumb-item active" aria-current="page">Công ty</li>
+                    <li class="breadcrumb-item active" aria-current="page">Danh sách công ty</li>
+                </ol>
+            </nav>
+            <div class="row mt-5">
+                <h1 class="list-product-title" style="text-align: center; margin-top:50px ;margin-bottom: 50px;">DANH SÁCH CÁC CÔNG TY </h1>
+                <div class="product-group">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-12">
+                            <div class="card card-product mb-3">
+                                <img class="abc" src="https://portal.ptit.edu.vn/wp-content/uploads/2020/11/1.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title product-title">LG VS DCV (LG Vehicle Component Solutions Development)</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-12">
+                            <div class="card card-product mb-3">
+                                <img class="abc" src="https://vieclam.ueh.edu.vn/images/company/avatar/ceSVtCdGXp_2bdd2574cf6a474d550c45f2c65e3bdf.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title product-title">CÔNG TY CHO THUÊ TÀI CHÍNH TNHH MTV QUỐC TẾ CHAILEASE</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-12">
+                            <div class="card card-product mb-3">
+                                <img class="abc" src="data:image/png;base64,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"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title product-title" style="text-align: center;">NGÂN HÀNG SÀI GÒN <br> CHI NHÁNH TẠI ĐÀ NẴNG</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 mb-5">
+                <div class="product-group">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-12">
+                            <div class="card card-product mb-3">
+                                <img src="../Images/transcosmos.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;" class="card-title product-title">ISMART.ASIA TECHNOLOGY</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-12">
+                            <div class="card card-product mb-3">
+                                <img src="../Images/mcredit.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;" class="card-title product-title">CÔNG TY TÀI CHÍNH MCREDIT</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-6 col-12">
+                            <div class="card card-product mb-3">
+                                <img src="../Images/ila.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 style="text-align: center;" class="card-title product-title">ILA VIỆT NAM</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row footer-content">
+                <div class="col-md-9 pt-3 pb-2">
+                    <p>&#169; 2022-2022 <b>Công ty cổ phần NiceJob Việt Nam</b>
+                    </p>
+                    <p class="tfooter">Trụ sở ĐN:
+                    </p>
+                    <p>470 Đường Trần Đại Nghĩa, Hoà Hải, Ngũ Hành Sơn, Đà Nẵng 550000, Việt Nam</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><b>Email:</b> huytn.21it@vku.udn.vn</p>
+                            <p><b>SĐT:</b> +84986810730</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><b>Email:</b> daotq.21it@vku.udn.vn</p>
+                            <p><b>SĐT:</b> +84986810730</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 logofooter">
+                    <div class="imgfooter">
+                        <a href="#">
+                            <img src="../Images/logoedited-none-background.png" alt="logo" id="logofooter">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

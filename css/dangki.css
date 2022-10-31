@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: Oswald, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #393E46;
+}
+
+@font-face {
+    font-family: Oswald;
+    src: url(../Font/Oswald/Oswald-VariableFont_wght.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+#a2 {
+    margin-top: 10px;
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+form div:last-child {
+    margin-bottom: 0px;
+}
+
+#a1 {
+    width: 100%;
+}
+.error{
+    color: red;
+}
+

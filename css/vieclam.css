@@ -1,0 +1,83 @@
+.content {
+    width: 100%;
+}
+
+.title {
+    margin: 30px 0 20px 0;
+}
+
+.find-job {
+    margin-top: 20px;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.find-job div {
+    margin-right: 5px;
+}
+
+.find-job div:last-child {
+    margin-right: 0;
+}
+
+.find-job .input {
+    flex: 2;
+}
+
+.find-job .form-group {
+    flex: 1;
+}
+
+.find-job .search-button {
+    /* width: 10px;
+    height: 10px; */
+    flex: 1;
+}
+
+.ad-carousel {
+    width: 100%;
+}
+
+.quang-cao {
+    margin: 0 auto;
+}
+
+#ads-1 {
+    width: 100%;
+}
+
+.title-ttd {
+    margin: 20px 0 20px 0;
+}
+
+.list-cong-viec .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cardr {
+    border: 1px solid #9fbaff;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    padding: 16px 5px 0 5px;
+    margin: 0 10px 10px 0;
+    flex: 1;
+}
+
+.cardr:hover {
+    background-color: #9fbaff;
+    transition: all 0.3s;
+}
+
+.logo-company img {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.info-company {
+    display: flex;
+    flex-direction: column;
+}
