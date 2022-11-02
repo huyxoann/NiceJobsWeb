@@ -4,12 +4,17 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
     header("location:trangchu.php");
 } else {
     if (isset($_POST['register'])) {
-        $user_id = "NV123567";
+        $role = 0;
+        $user_id = user_id_generator($role);
+        $sql_check_id_user = "SELECT * FROM users WHERE id_user = '$user_id'";
+        $result_sql_id = mysqli_query($conn, $sql_check_id_user);
+        if (mysqli_num_rows($result_sql_id) > 0) {
+        }
+
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
         $re_password = mysqli_real_escape_string($conn, $_POST['re_password']);
         $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $role = 0;
 
         //check if username already registered
         $sql = "SELECT `username`FROM `users` WHERE `username` = '$username' ";
@@ -32,6 +37,14 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
                 header('Location:sign_up.php');
             }
         }
+    }
+}
+function user_id_generator($role)
+{
+    if ($role == 0) {
+        return 'NV' . rand(100000, 999999);
+    } else {
+        return 'TD' . rand(100000, 999999);
     }
 }
 ?>
