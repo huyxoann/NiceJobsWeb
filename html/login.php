@@ -69,9 +69,9 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
                             <div class="col">
                                 <label>Tên đăng nhập </label>
                                 <?php if (isset($username_typed)) { ?>
-                                    <input name="username" id=" username" type="text" required class="form-control" placeholder="Nhập tên đăng nhập của bạn" value="<? echo $username_typed ?>">
+                                    <input name="username" id=" username" type="text" required class="form-control" placeholder="Nhập tên đăng nhập của bạn" <?php echo 'value = "' . $username_typed . '"' ?>>
                                 <?php } else { ?>
-                                    <input name="username" id=" username" type="text" required class="form-control" placeholder="Nhập tên đăng nhập của bạn" value="<?php ?>">
+                                    <input name="username" id=" username" type="text" required class="form-control" placeholder="Nhập tên đăng nhập của bạn">
                                 <?php } ?>
                             </div>
 
