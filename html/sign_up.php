@@ -7,6 +7,24 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
         $role = 0;
         $user_id = '';
         $is_exist_user = true;
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
+        $re_password = mysqli_real_escape_string($conn, $_POST['re_password']);
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $verify_code = rand(100000, 999999);
+        //Kiem tra email hop le
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            /*Thong bao email khong hop le */
+        }
+        //Kiem tra email da ton tai
+        $sql_checking_email = "SELECT * FROM users WHERE email = '$email' AND verify = '1'";
+        $result_sql_email = mysqli_query($conn, $sql_checking_email);
+        if (mysqli_num_rows($result_sql_email) > 0) {
+            /*Thong bao email da dc su dung */
+        }
+        //Tao id user
+
+
         while ($is_exist_user) {
             $user_id = user_id_generator($role);
             $sql_check_id_user = "SELECT * FROM users WHERE id_user = '$user_id'";
@@ -17,10 +35,6 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
                 $is_exist_user = false;
             }
         }
-        $username = mysqli_real_escape_string($conn, $_POST['username']);
-        $password = mysqli_real_escape_string($conn, $_POST['password']);
-        $re_password = mysqli_real_escape_string($conn, $_POST['re_password']);
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
 
         //check if username already registered
         $sql = "SELECT `username`FROM `users` WHERE `username` = '$username' ";
@@ -32,9 +46,9 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
             //check $pass == $cpass
             if ($password == $re_password) {
                 $password = md5($password);
-                $sql = "INSERT INTO users (id_user, username, password, email, role) VALUES('$user_id', '$username', '$password','$email', '$role')";
+                $sql = "INSERT INTO users (id_user, username, password, email, role, verify_code) VALUES('$user_id', '$username', '$password','$email', '$role', '$verify_code')";
                 if ($conn->query($sql) === TRUE) {
-                    header("Location: login.php");
+                    header("Location: mail_sign_up.php");
                 } else {
                     header("Location: sign_up.php");
                 }
