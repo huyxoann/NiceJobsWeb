@@ -69,6 +69,10 @@ p {
     justify-content: center;
 }
 
+#alert{
+    margin-top: 12px;
+   padding: 1rem 0 0 1rem; 
+}
 @media(max-width: 1024px) {
     #a1 {
         display: none;

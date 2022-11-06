@@ -1,16 +1,22 @@
 <?php
-require('connection.php');
+require('../modules/connection.php');
 if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
     header("location:trangchu.php");
 } else {
     if (isset($_POST['register'])) {
         $role = 0;
-        $user_id = user_id_generator($role);
-        $sql_check_id_user = "SELECT * FROM users WHERE id_user = '$user_id'";
-        $result_sql_id = mysqli_query($conn, $sql_check_id_user);
-        if (mysqli_num_rows($result_sql_id) > 0) {
+        $user_id = '';
+        $is_exist_user = true;
+        while ($is_exist_user) {
+            $user_id = user_id_generator($role);
+            $sql_check_id_user = "SELECT * FROM users WHERE id_user = '$user_id'";
+            $result_sql_id = mysqli_query($conn, $sql_check_id_user);
+            if (mysqli_num_rows($result_sql_id) > 0) {
+                $is_exist_user = true;
+            } else {
+                $is_exist_user = false;
+            }
         }
-
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
         $re_password = mysqli_real_escape_string($conn, $_POST['re_password']);
@@ -59,7 +65,6 @@ function user_id_generator($role)
     <title>Đăng ký</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel="stylesheet" href="../CSS/bootstrap-5.1.3-dist/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../CSS/stylechung.css">
     <link rel="stylesheet" href="../CSS/dangki.css">
 </head>
 
@@ -94,14 +99,14 @@ function user_id_generator($role)
             }
         }
     </script>
-    <div class="container-fruid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
                 <a href="file:///D:/DoAnCoSo/HTML/trangChu.html">
                     <img src="../Images/logoedited-none-background.png" id="a2">
                 </a>
-                <form method="post" action="sign_up.php">
-                    <h2 style="text-align: center;margin: 0 auto;padding-top: 15px;" id="dn">Đăng Ký</h2>
+                <form action="sign_up.php" method="post">
+                    <h2 style="text-align: center; margin: 0 auto;padding-top: 15px;" id="dn">Đăng Ký</h2>
                     <div class="form-group">
                         <div><span id="error4" class="error"></span></div>
                         <label>Username </label>
@@ -135,8 +140,8 @@ function user_id_generator($role)
                         <label><br> Tôi đồng ý điều khoản sử dụng </label>
                     </div>
 
-                    <div class="form-group">
-                        <button onclick="checkInput()" name="register" class="btn btn-success btn-lg  " type="submit" style="margin-left: 200px; margin-top: 25px; background-color: #2A5DDE;" id="btnDN">Đăng ký ngay</button>
+                    <div class="form-group" style="">
+                        <button onclick="checkInput()" name="register" class="btn btn-success btn-lg" type="submit" style="background-color: #2A5DDE;" id="btnDN">Đăng ký ngay</button>
                     </div>
 
                 </form>
@@ -147,7 +152,6 @@ function user_id_generator($role)
             </div>
         </div>
 
-    </div>
     </div>
 </body>
 

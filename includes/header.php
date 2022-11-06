@@ -1,17 +1,17 @@
 <body>
     <div class="shadow-sm rounded header-content mb-1">
         <div class="col-mb-3 mt-2 ps-4 col-sm" id="logo">
-            <a href="file:///D:/DoAnCoSo/HTML/trangChu.html" class="">
+            <a href="../html/trangChu.php" class="">
                 <img src="../Images/logoedited.png " alt="logo ">
             </a>
         </div>
         <div class="col-md-7 mt-3 col-sm" id="menu">
             <ul class="nav">
                 <li class="nav-item ">
-                    <a href="file:///D:/DoAnCoSo/HTML/thongtinweb.html" class="nav-link ">Về chúng tôi</a>
+                    <a href="../html/thongtinweb.php" class="nav-link ">Về chúng tôi</a>
                 </li>
                 <li class="nav-item ">
-                    <a href="file:///D:/DoAnCoSo/HTML/vieclam.html" class="nav-link ">Việc làm</a>
+                    <a href="../html/vieclam.php" class="nav-link ">Việc làm</a>
                 </li>
                 <li class="nav-item" id="menu-cty">
                     <a href="#" class="nav-link ">Công ty</a>
@@ -47,8 +47,8 @@
         <?php } else {
         ?>
             <div class="col-md-2 mt-3 justify-content-end button-header">
-                <button type="button" class="btn btn-outline-primary me-2"><a href="file:///D:/DoAnCoSo/HTML/sign-up.html" style="color: #2A5DDE;">Đăng ký</a></button>
-                <button type="button" class="btn btn-primary me-2 "><a href="file:///D:/DoAnCoSo/HTML/login.html" style="color: #f9f9f9;">Đăng nhập</a></button>
+                <button type="button" class="btn btn-outline-primary me-2"><a href="../html/sign_up.php" style="color: #2A5DDE;">Đăng ký</a></button>
+                <button type="button" class="btn btn-primary me-2 "><a href="../html/login.php" style="color: #f9f9f9;">Đăng nhập</a></button>
             </div>
         <?php } ?>
         <div id="menu-hidden">
@@ -59,7 +59,7 @@
     </div>
     <div class="collapse" id="menuChoose">
         <ul>
-            <li><a href="file:///D:/DoAnCoSo/HTML/thongtinweb.html">Về chúng tôi</a></li>
+            <li><a href="../html/thongtinweb.php">Về chúng tôi</a></li>
             <li><a href="file:///D:/DoAnCoSo/HTML/vieclam.html">Việc làm</a></li>
             <li><a href="file:///D:/DoAnCoSo/HTML/danh-sach-cac-cong-ty.html">Danh sách công ty</a></li>
             <li><a href="file:///D:/DoAnCoSo/HTML/top-cong-ty.html">Top công ty</a></li>

@@ -1,5 +1,5 @@
 <?php
-require('connection.php');
+require('../modules/connection.php');
 if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
     header("location:trangchu.php");
 } else {
@@ -16,7 +16,9 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
             setcookie("password", $password, time() + 1209600);
             header("location: trangchu.php");
         } else {
-            header("login.php?error=Đăng nhập không thành công");
+            $notification = "Đăng nhập không thành công!";
+            $username_typed = $username;
+            header("login.php");
         }
     }
 }
@@ -57,14 +59,20 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
                 </a>
                 <form action="login.php" method="post">
                     <h2 id="dn" style="padding-top: 25px;">Đăng nhập</h2>
-                    <?php if (isset($_GET['error'])) { ?>
-                        <p id="error" style="color: red;"><?php echo $_GET['error'] ?></p>
+                    <?php if (isset($notification)) { ?>
+                        <div class="alert alert-danger" role="alert" id="alert" style="text-align: center;">
+                            <p id="notification" style="text-align: left;"><?php echo $notification ?></p>
+                        </div>
                     <?php } ?>
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col">
                                 <label>Tên đăng nhập </label>
-                                <input name="username" id=" username" type="text" required class="form-control" placeholder="Nhập tên đăng nhập của bạn">
+                                <?php if (isset($username_typed)) { ?>
+                                    <input name="username" id=" username" type="text" required class="form-control" placeholder="Nhập tên đăng nhập của bạn" value="<? echo $username_typed ?>">
+                                <?php } else { ?>
+                                    <input name="username" id=" username" type="text" required class="form-control" placeholder="Nhập tên đăng nhập của bạn" value="<?php ?>">
+                                <?php } ?>
                             </div>
 
                             <div class=" col">
@@ -88,7 +96,6 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
                                 <button class="btn btn-outline-primary fb btn-lg" type="button">Facebook</button>
                             </div>
                         </div>
-
                         <p>Nếu bạn chưa có tài khoản?</p>
                         <a style="text-decoration: none;" href="../html/sign_up.php">
                             <p>Đăng ký ngay</p>
@@ -98,11 +105,6 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
                         </a>
                     </div>
 
-
-
-                    <div class="row">
-
-                    </div>
                 </form>
             </div>
             <div class="col-md-6">
