@@ -16,7 +16,7 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
             setcookie("password", $password, time() + 1209600);
             header("location: trangchu.php");
         } else {
-            $notification = "Đăng nhập không thành công!";
+            $notification = "Đăng nhập không thành công, vui lòng kiểm tra lại tài khoản và mật khẩu!";
             $username_typed = $username;
             header("login.php");
         }
@@ -107,7 +107,7 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
 
                 </form>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" id="khung_anh">
                 <img src="../Images/cv.png" id="a1">
             </div>
         </div>
