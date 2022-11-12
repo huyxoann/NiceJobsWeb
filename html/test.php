@@ -1,3 +1,9 @@
 <?php
-$id_user = 'NV' . rand(100000, 999999);
-echo $id_user;
+$email = 'hirashihiro@gmail.com';
+$pieces = explode("@", $email);
+$star = strlen($pieces[0]) - 3;
+$star_string = str_repeat('*', $star);
+
+// echo str_replace($pieces[0], $star_string, $email);
+
+echo $pieces[0] . " " . $pieces[1];

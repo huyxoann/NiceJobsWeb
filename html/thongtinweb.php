@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Về chúng tôi | Nice Job</title>
-    <link rel="stylesheet" href="../CSS/stylechung.css">
-    <link rel="stylesheet" href="../CSS/thongtinweb.css">
     <link rel="stylesheet" href="../CSS/bootstrap-5.1.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../CSS/thongtinweb.css">
+    <link rel="stylesheet" href="../CSS/stylechung.css">
     <script src="../css/bootstrap.bundle.min.js"></script>
     <script src="../css/jquery-3.6.0.min.js"></script>
 </head>

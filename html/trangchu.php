@@ -11,6 +11,7 @@ require('../modules/connection.php');
     <title>Trang chủ | Nice Job</title>
     <link rel="stylesheet" href="../CSS/bootstrap-5.1.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../CSS/trangChu.css">
+    <link rel="stylesheet" href="../css/stylechung.css">
     <script src="../css/bootstrap.bundle.min.js"></script>
     <script src="../css/jquery-3.6.0.min.js"></script>
 </head>
@@ -111,19 +112,19 @@ require('../modules/connection.php');
             <div class="hoso-cv-content">
                 <h3>Đăng tuyển và tìm hồ sơ</h3>
                 <p>Bạn là nhà tuyển dụng vào muốn tìm kiếm những nhân viên tiềm năng.</p>
-                <button type="button" class="btn btn-primary" id="dangtuyenbtn">Đăng tuyển & tìm hồ sơ</button>
+                <a href="../html/login_signup_employer.php"><button type="button" class="btn btn-primary" id="dangtuyenbtn"> Đăng tuyển & tìm hồ sơ</button></a>
             </div>
             <div class="taocv-moi">
-                <div class="cv-box" id="cv-box1">
-                    <h3> Tạo hồ sơ mới</h3>
-                    <p> Tạo hồ sơ công việc mới trên Nice Job để nhà tuyển dụng có thể hiểu bạn hơn.</p>
-                    <button type="button" class="btn btn-primary" id="dangtuyenbtn">+Tạo Hồ Sơ Việc Làm</button>
+                <div class="hoso-cv-content" id="cv-box1">
+                    <h3> Thêm hồ sơ mới</h3>
+                    <p> Thêm hồ sơ công việc mới trên Nice Job để nhà tuyển dụng có thể hiểu bạn hơn.</p>
+                    <a href="../html/hoso_cv.php"><button type="button" class="btn btn-primary" id="dangtuyenbtn">+ Tạo Hồ Sơ Việc Làm</button></a>
                 </div>
-                <div class="cv-box">
+                <!-- <div class="cv-box">
                     <h3>Dùng mẫu CV có sẵn</h3>
                     <p>Sử dụng những mẫu CV có sẵn với hơn 50+ mẫu đẹp mắt</p>
                     <button type="button" class="btn btn-primary" id="dangtuyenbtn"><a href="file:///D:/DoAnCoSo/HTML/mau-cv.html" style="color: #f9f9f9">Dùng ngay</a></button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -134,17 +135,17 @@ require('../modules/connection.php');
     </div>
     <div class="cong-ty-block ">
         <div class="danh-sach-cong-ty " id="company1 ">
-            <a href="file:///D:/DoAnCoSo/HTML/danh-sach-cac-cong-ty.html">
+            <a href="../html/cong_ty.php">
                 <h3>Danh sách công ty</h3>
                 <p>Danh sách các công ty đang tuyển dụng được cập nhật theo thời gian với đa dạng loại ngành nghề, lĩnh vực</p>
             </a>
         </div>
-        <div class="top-cong-ty ">
+        <!-- <div class="top-cong-ty ">
             <a href="file:///D:/DoAnCoSo/HTML/top-cong-ty.html">
                 <h3>Top công ty</h3>
                 <p>Danh sách những công ty top đầu tại thị trường Việt Nam đang tìm kiếm nguồn nhân lực</p>
             </a>
-        </div>
+        </div> -->
     </div>
 </div>
 <div class="about-us-content ">
@@ -156,7 +157,7 @@ require('../modules/connection.php');
         dễ sử dụng. Tìm hiểm thêm về chúng tôi ở đường dẫn bên dưới.
     </div>
     <div class="button-about-us ">
-        <button type="button" class="btn btn-primary me-2 "><a href="file:///D:/DoAnCoSo/HTML/thongtinweb.html" style="color: #f9f9f9;">Tìm hiểu thêm...</a></button>
+        <button type="button" class="btn btn-primary me-2 "><a href="../html/thongtinweb.php" style="color: #f9f9f9;">Tìm hiểu thêm...</a></button>
     </div>
 </div>
 </div>

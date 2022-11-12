@@ -14,24 +14,30 @@
                     <a href="../html/vieclam.php" class="nav-link ">Việc làm</a>
                 </li>
                 <li class="nav-item" id="menu-cty">
-                    <a href="#" class="nav-link ">Công ty</a>
-                    <ul class="nav sub-menu">
-                        <li class="nav-item">
-                            <a href="file:///D:/DoAnCoSo/HTML/danh-sach-cac-cong-ty.html" class="nav-link">Danh sách công ty</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="file:///D:/DoAnCoSo/HTML/top-cong-ty.html" class="nav-link">Top công ty</a>
-                        </li>
-                    </ul>
+                    <a href="../html/cong_ty.php" class="nav-link ">Công ty</a>
                 </li>
                 <li class="nav-item ">
-                    <a href="file:///D:/DoAnCoSo/HTML/mau-cv.html" class="nav-link ">Hồ Sơ CV</a>
+                    <a href="../html/hoso_cv.php" class="nav-link ">Hồ Sơ CV</a>
                 </li>
 
             </ul>
         </div>
+        <div class="mt-3 justify-content-end button-header">
+            <?php require('../modules/connection.php');
+            if (isset($_COOKIE['$username'])) {
+                $username = $_COOKIE['username'];
+                $sql = "SELECT * FROM users WHERE username = '$username'";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+                if ($row['role'] == 0) { ?>
+                    <button type="button" class="btn btn-outline-primary me-2"><a href="../html/login_signup_employee.php" style="color: #2A5DDE;">Tìm việc ngay!</a></button>
+                <?php } else { ?>
+                    <button type="button" class="btn btn-primary me-2 dangTuyen"><a href="../html/login_signup_employer.php" style="color: #f9f9f9; ">Đăng tuyển và tìm nhân sự</a></button>
+                <?php } ?>
+            <?php } ?>
+        </div>
         <?php if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) { ?>
-            <div class="nav-item dropdown">
+            <div class="nav-item dropdown mt-3">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" type="button">
                     <?= $_COOKIE['username']; ?>
                 </a>
@@ -47,8 +53,8 @@
         <?php } else {
         ?>
             <div class="col-md-2 mt-3 justify-content-end button-header">
-                <button type="button" class="btn btn-outline-primary me-2"><a href="../html/sign_up.php" style="color: #2A5DDE;">Đăng ký</a></button>
-                <button type="button" class="btn btn-primary me-2 "><a href="../html/login.php" style="color: #f9f9f9;">Đăng nhập</a></button>
+                <button type="button" class="btn btn-outline-primary me-2"><a href="../html/login_signup_employee.php" style="color: #2A5DDE;">Tìm việc ngay!</a></button>
+                <button type="button" class="btn btn-primary me-2 dangTuyen"><a href="../html/login_signup_employer.php" style="color: #f9f9f9; ">Đăng tuyển và tìm nhân sự</a></button>
             </div>
         <?php } ?>
         <div id="menu-hidden">
@@ -60,13 +66,13 @@
     <div class="collapse" id="menuChoose">
         <ul>
             <li><a href="../html/thongtinweb.php">Về chúng tôi</a></li>
-            <li><a href="file:///D:/DoAnCoSo/HTML/vieclam.html">Việc làm</a></li>
-            <li><a href="file:///D:/DoAnCoSo/HTML/danh-sach-cac-cong-ty.html">Danh sách công ty</a></li>
-            <li><a href="file:///D:/DoAnCoSo/HTML/top-cong-ty.html">Top công ty</a></li>
-            <li><a href="file:///D:/DoAnCoSo/HTML/mau-cv.html">Hồ sơ CV</a></li>
+            <li><a href="../html/vieclam.php">Việc làm</a></li>
+            <li><a href="../html/cong_ty.php">Công ty</a></li>
+            <li><a href="../html/hoso_cv.php">Hồ sơ CV</a></li>
         </ul>
 
-        <button type="button" class="btn btn-primary me-2 buttonHiden"><a href="/html/sign_up.php" style="color: #f9f9f9;">Đăng ký</a></button>
+        <button type="button" class="btn btn-primary me-2 buttonHiden"><a href="../html/login_signup_employee.php" style="color: #f9f9f9;">Tìm việc ngay!</a></button>
         <br>
-        <button type="button" class="btn btn-primary me-2 buttonHiden"><a href="/html/login.php" style="color: #f9f9f9;">Đăng nhập</a></button>
+        <br>
+        <button type="button" class="btn btn-primary me-2 buttonHiden"><a href="../html/login_signup_employer.php" style="color: #f9f9f9;">Đăng tuyển và tìm nhân sự</a></button>
     </div>

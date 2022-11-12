@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-3 logofooter ">
                 <div class="imgfooter ">
-                    <a href="file:///D:/DoAnCoSo/HTML/trangChu.html">
+                    <a href="../html/trangchu.php">
                         <img src="../Images/logoedited-none-background.png " alt="logo " id="logofooter ">
                     </a>
                 </div>

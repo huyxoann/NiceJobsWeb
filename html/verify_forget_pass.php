@@ -1,33 +1,21 @@
 <?php
 require('../modules/connection.php');
-
 if (isset($_POST['validate']) && $_POST['validate']) {
     $validate_code = '' . $_POST['first'] . $_POST['second'] . $_POST['third'] . $_POST['fourth'] . $_POST['fifth'] . $_POST['sixth'];
     $username_validate = $_COOKIE['username_temp'];
     $sql = "SELECT * FROM users WHERE username = '$username_validate'";
     $result = mysqli_query($conn, $sql);
     $rows = "";
+    $email = $rows['email'];
     while ($rows = mysqli_fetch_assoc($result)) {
         if ($validate_code == $rows['verify_code']) {
-            $sql_update = "UPDATE users SET verify = '1' WHERE username = '$username_validate'";
-
-            if ($conn->query($sql_update)) {
-                if ($rows['role'] == 0) {
-                    header('Location: login_signup_employee.php');
-                } elseif ($rows['role'] == 1) {
-                    header('Location: login_signup_employer.php');
-                }
-            } else {
-                $wrong_code = "Nhập sai mã xác thực";
-                header('request_active.php?username=' . $username_validate);
-            }
+            header('Location: change_password.php');
         } else {
             $wrong_code = "Nhập sai mã xác thực";
             header('request_active.php' . $username_validate);
         }
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +64,7 @@ if (isset($_POST['validate']) && $_POST['validate']) {
     <div class="web_content container">
         <div class="container height-100 d-flex justify-content-center align-items-center">
             <div class="position-relative">
-                <form action="request_active.php" method="post">
+                <form action="verify_forget_pass.php" method="post">
                     <div class="card p-2 text-center">
                         <h6>Kiểm tra email và nhập mật khẩu một lần để xác minh tài khoản của bạn</h6>
                         <div> <span>Code đã được gửi đến địa chỉ email </span> <small></small> </div>
@@ -99,9 +87,9 @@ if (isset($_POST['validate']) && $_POST['validate']) {
                         </div>
                     </div>
                 </form>
-                <div class="card-2">
+                <!-- <div class="card-2">
                     <div class="content d-flex justify-content-center align-items-center"> <span>Không nhận được mã?</span> <a href="#" class="text-decoration-none ms-3">Resend(1/3)</a> </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
