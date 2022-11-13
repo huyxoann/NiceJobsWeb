@@ -14,7 +14,7 @@ include 'includes/header.php';
                 </div>
                 <!-- card-body -->
                 <div class="card-body">
-                    <form action="code.php" method="post" enctype="multipart/form-data">
+                    <form action="code-list-corporation.php" method="post" enctype="multipart/form-data">
                         <div class="row">
                         <div class="col-md-6">
                                 <label for="">Corporation ID</label>
@@ -52,7 +52,7 @@ include 'includes/header.php';
                             
                            
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary" name="add_company_btn">Save</button>
+                                <button type="submit" class="btn btn-primary" name="add_corporation_btn">Save</button>
                             </div>
                         </div>
                     </form>

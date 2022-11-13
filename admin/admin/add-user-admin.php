@@ -14,7 +14,7 @@ include 'includes/header.php';
                 </div>
                 <!-- card-body -->
                 <div class="card-body">
-                    <form action="code.php" method="post" enctype="multipart/form-data">
+                    <form action="code-admin.php" method="post" enctype="multipart/form-data">
                         <div class="row">
                            
                             <div class="col-md-6">
@@ -32,6 +32,10 @@ include 'includes/header.php';
                             <div class="col-md-6">
                                 <label for="">Re-password</label>
                                 <input type="password" name="re_password" placeholder="Enter re-password" class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="">Upload Image</label>
+                                <input type="file" name="image" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label for="">Phone number</label>

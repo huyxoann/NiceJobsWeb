@@ -9,8 +9,9 @@ include '../config/connectdb.php';
     <div class="row">
         <div class="col-md-12">
             <div class="card-header">
-                
-                <h1 style="text-align: center;"> Danh sách Tài khoản Admin</h1>
+                <h1 style="text-align: center;height: 50px; margin-top: 25px;"> 
+                DANH SÁCH TÀI KHOẢN ADMIN
+                </h1>
                 <button type="button"   class="btn btn-success float-end  w-15"><a href="add-user-admin.php">Add</a></button> 
 
             </div>
@@ -20,6 +21,7 @@ include '../config/connectdb.php';
                         <th>ID</th>
                         <th>Username</th>
                         <th>Password</th>
+                        <th>Avatar</th>
                         <th>Phone</th>
                         <th>Address</th>
                     </thead>
@@ -34,12 +36,18 @@ include '../config/connectdb.php';
                                     <td><?= $item['id'] ?></td>                             
                                     <td ><?= $item['username'] ?></td>
                                     <td ><?= $item['password'] ?></td>
+                                   
+                                    <td>
+                                 <img style="width: 100px;height:100px;" src="../images/<?=$item['image']; ?>">
+                                    </td>
+                                   
+
                                     <td ><?= $item['phone'] ?></td>
                                     <td ><?= $item['address'] ?></td>
 
                                     <td>
                                         <a href="edit-user-admin.php?id=<?= $item['id'] ?>" class="btn btn-primary">Edit</a>
-                                        <form action="code.php" method="post">
+                                        <form action="code-admin.php" method="post">
                                             <input type="hidden" name="id" value="<?= $item['id'] ?>">
                                             <button type="submit" class="btn btn-danger" name="delete_user_admin_btn"> Delete</button>
                                         </form>

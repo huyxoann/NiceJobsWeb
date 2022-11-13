@@ -5,15 +5,9 @@ $page =  substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") +
   <div class="sidenav-header">
     <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
     <a class="navbar-brand m-0" href=" index.php ">
-      <!-- <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo"> -->
-      <!-- <span class="ms-1 font-weight-bold text-white"> NICE JOB</span><br> -->
-      <?php
-      if (isset($_COOKIE['username'])) {
-      ?>
-        <span class="ms-1 font-weight-bold text-white"> Hello <?= $_COOKIE['username'] ?></span>
-      <?php
-      }
-      ?>
+     
+        <span class="ms-1 font-weight-bold text-white"> NICE JOB </span>
+    
 
     </a>
   </div>
@@ -29,31 +23,13 @@ $page =  substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") +
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white <?= $page == "list-company.php" ? 'active bg-gradient-primary' : '' ?>" href="list-company.php">
+        <a class="nav-link text-white <?= $page == "list-corporation.php" ? 'active bg-gradient-primary' : '' ?>" href="list-corporation.php">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">business</i>
           </div>
           <span class="nav-link-text ms-1">list company</span>
         </a>
       </li>
-
-      <!-- <li class="nav-item">
-        <a class="nav-link text-white <?= $page == "top-company.php" ? 'active bg-gradient-primary' : ''; ?>" href="top-company.php">
-          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">star</i>
-          </div>
-          <span class="nav-link-text ms-1">Top company</span>
-        </a>
-      </li> -->
-
-      <!-- <li class="nav-item">
-        <a class="nav-link text-white <?= $page == "mau-cv.php" ? 'active bg-gradient-primary' : ''; ?>" href="mau-cv.php">
-          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">featured_play_list</i>
-          </div>
-          <span class="nav-link-text ms-1">Mẫu CV</span>
-        </a>
-      </li> -->
       
       <li class="nav-item">
         <a class="nav-link text-white <?= $page == "user-admin.php" ? 'active bg-gradient-primary' : ''; ?>" href="user-admin.php">
@@ -71,22 +47,6 @@ $page =  substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") +
           <span class="nav-link-text ms-1">Users</span>
         </a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link text-white <?= $page == "#" ? 'active bg-gradient-primary' : ''; ?>" href="#">
-          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">person_2</i>
-          </div>
-          <span class="nav-link-text ms-1">User người đăng tuyển</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white <?= $page == "#" ? 'active bg-gradient-primary' : ''; ?>" href="#">
-          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">person_3</i>
-          </div>
-          <span class="nav-link-text ms-1">Tài khoản người tìm việc</span>
-        </a>
-      </li> -->
 
 
     </ul>
