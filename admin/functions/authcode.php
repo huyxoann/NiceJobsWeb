@@ -16,8 +16,9 @@ if (isset($_POST['login_btn'])) {
         setcookie("username", $username, time() + 1209600);
         setcookie("password", $password, time() + 1209600);
 
-            redirect("../admin/index.php","Welcome to Dashboard");
+            redirect("../admin/admin/index.php","Welcome to Dashboard");
     } else {
         redirect("../login.php","The account and password are incorrect. Please re-enter !");
+      
     }
 }

@@ -1,5 +1,5 @@
 <?php
-include 'includes/header.php';
+include 'includes/header.php'; 
 require_once 'functions/myfunctions.php';
 require_once 'config/connectdb.php';
 
@@ -12,13 +12,13 @@ if (isset($_POST['login_btn'])) {
     $login_query_run = mysqli_query($conn, $login_query);
 
     if (mysqli_num_rows($login_query_run) > 0) {
+       
+        setcookie("username", $username, time() + 3600);
+        setcookie("password", $password, time() + 3600);
 
-        setcookie("username", $username, time() + 1209600);
-        setcookie("password", $password, time() + 1209600);
-
-        redirect("../admin/admin/index.php", "Welcome to Dashboard");
+            redirect("../admin/admin/index.php","Welcome to Dashboard");
     } else {
-        redirect("login.php", "The account and password are incorrect. Please re-enter !");
+        redirect("login.php","The account and password are incorrect. Please re-enter !");
     }
 }
 ?>
