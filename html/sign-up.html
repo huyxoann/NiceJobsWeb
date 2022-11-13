@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +43,7 @@
                     e4.innerHTML = "*Vui lòng nhập Mật khẩu";
                 }
             }
+<<<<<<< HEAD
         </script>
         <div class="container-fluid">
             <div class="row">
@@ -86,6 +89,56 @@
                         <div class="form-group">
                             <button onclick="checkInput()" name="register" class="btn btn-success btn-lg  " type="submit" style="margin-left: 200px; margin-top: 25px; background-color: #2A5DDE;" id="btnDN">Đăng ký ngay</button>
                         </div>
+=======
+            if (b == "") {
+                e2.innerHTML = "*Vui lòng nhập Họ";
+            }
+            if (c == "") {
+                e3.innerHTML = "*Vui lòng nhập Email";
+            }
+            if (d == "") {
+                e4.innerHTML = "*Vui lòng nhập Mật khẩu";
+            }
+        }
+    </script>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="file:///D:/DoAnCoSo/HTML/trangChu.html">
+                    <img src="../Images/logoedited-none-background.png" id="a2">
+                </a>
+                <form  method="post">
+                    <h2 style="text-align: center;margin: 0 auto;padding-top: 15px;" id="dn">Đăng Ký</h2>
+                    
+                 
+                    <div class="form-group">
+                        <div><span id="error4" class="error"></span></div>
+                        <label>Username </label>
+                        <input id="username"name="username" type="text" required class="form-control" placeholder="Username của bạn">
+                        <span class="show-btn"><i class="fas fa-eye"></i></span>
+                    </div>
+
+                    <div class="form-group">
+                        <div><span id="error4" class="error"></span></div>
+                        <label>Password *</label>
+                        <input id="password" name="password" type="password" required class="form-control" placeholder="Password của bạn">
+                        <span class="show-btn"><i class="fas fa-eye"></i></span>
+                    </div>
+
+                    <div class="form-group">
+                        <div><span id="error4" class="error"></span></div>
+                        <label>Re-Password *</label>
+                        <input id="password" name="re-password" type="password" required class="form-control" placeholder="Nhập lại Password">
+                        <span class="show-btn"><i class="fas fa-eye"></i></span>
+                    </div>
+
+                    <div class="form-group">
+                        <div><span id="error3" class="error"></span></div>
+                        <label>Email *</label>
+                        <input id="email" name="email" type="email" required class="form-control" placeholder="Email của bạn">
+
+                    </div>
+>>>>>>> 71cb3a964720b8e6370e1d168460dc41ab489d8c
 
                     </form>
                 </div>
