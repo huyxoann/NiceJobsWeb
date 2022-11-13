@@ -47,7 +47,7 @@ if (isset($_POST['add_corporation_btn'])) {
     }
 
     $query = "UPDATE `corporation` SET 
-            `corp_name`='$corp_name',`corp_field`='$corp_field',`corp_mail`='$corp_mail',`image`='$image',`description`='$description',`website`='$website',`address`='$address' 
+            `corp_name`='$corp_name',`corp_field_id`='$corp_field',`corp_mail`='$corp_mail',`image`='$image',`description`='$description',`website`='$website',`address`='$address' 
             WHERE `id_corp`='$id_corp'
             ";
     $query_run = mysqli_query($conn, $query);
@@ -77,5 +77,3 @@ if (isset($_POST['add_corporation_btn'])) {
         redirect("list-corporation.php", "Something Went Wrong !");
     }
 }
-
-      

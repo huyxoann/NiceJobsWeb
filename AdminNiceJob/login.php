@@ -1,7 +1,7 @@
 <?php
-include 'includes/header.php'; 
-require_once 'functions/myfunctions.php';
-require_once 'config/connectdb.php';
+include 'includes/header.php';
+require_once '../AdminNiceJob/functions/myfunctions.php';
+require_once '../AdminNiceJob/config/connectdb.php';
 
 if (isset($_POST['login_btn'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -12,13 +12,13 @@ if (isset($_POST['login_btn'])) {
     $login_query_run = mysqli_query($conn, $login_query);
 
     if (mysqli_num_rows($login_query_run) > 0) {
-       
+
         setcookie("username", $username, time() + 3600);
         setcookie("password", $password, time() + 3600);
 
-            redirect("../admin/admin/index.php","Welcome to Dashboard");
+        redirect("../AdminNiceJob/admin/index.php", "Welcome to Dashboard");
     } else {
-        redirect("login.php","The account and password are incorrect. Please re-enter !");
+        redirect("../AdminNiceJob/login.php", "The account and password are incorrect. Please re-enter !");
     }
 }
 ?>

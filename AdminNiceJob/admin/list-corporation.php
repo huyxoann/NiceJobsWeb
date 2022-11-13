@@ -1,7 +1,7 @@
 <?php
 include 'includes/header.php';
-require_once '../functions/myfunctions.php';
-include '../config/connectdb.php';
+require '../functions/myfunctions.php';
+require '../config/connectdb.php';
 
 ?>
 
@@ -38,19 +38,15 @@ include '../config/connectdb.php';
                             $begin = ($page * 3) - 3;
                         }
 
-                        $query = "SELECT `id_corp`, `corp_name`, `corp_field`, `image`
-                         FROM `corporation`  LIMIT $begin,3 ";
+                        $query = "SELECT corporation.id_corp, corporation.corp_name, corp_field.field_name, corporation.image FROM corporation INNER JOIN corp_field ON corporation.corp_field_id = corp_field.field_id LIMIT $begin,3 ";
                         $query_run = mysqli_query($conn, $query);
-
-
                         if (mysqli_num_rows($query_run) > 0) {
                             foreach ($query_run as $item) {
-
                         ?>
                                 <tr>
                                     <td><?= $item['id_corp'] ?></td>
                                     <td><?= $item['corp_name'] ?></td>
-                                    <td><?= $item['corp_field'] ?></td>
+                                    <td><?= $item['field_name'] ?></td>
                                     <td>
                                         <img style="width: 100px;height:100px;" src="../images/<?= $item['image']; ?>">
                                     </td>
@@ -72,13 +68,13 @@ include '../config/connectdb.php';
                             echo "No records found";
                         }
                         ?>
-                        <tr >
+                        <tr>
                             <td style="margin-left: 200px;padding-left: 100px;">
                                 <style type="text/css">
                                     ul.list-trang {
                                         padding: 0;
                                         margin: 0;
-                                        
+
                                         list-style: none;
                                     }
 
@@ -102,7 +98,7 @@ include '../config/connectdb.php';
                                 $sql_trang = "SELECT * FROM `corporation`";
                                 $sql_trang_run = mysqli_query($conn, $sql_trang);
                                 $row_count = mysqli_num_rows($sql_trang_run);
-                                 $trang = ceil($row_count / 3);
+                                $trang = ceil($row_count / 3);
 
 
                                 ?>
@@ -110,14 +106,12 @@ include '../config/connectdb.php';
                                     <?php
                                     for ($i = 1; $i <= $trang; $i++) {
                                     ?>
-                                        <li
-                                        <?php if ($i == $page) {
-                                                    echo 'style="background:brown;"';
-                                                } else {
-                                                    echo '';
-                                                }
-                                                ?> 
-                                        ><a href="list-corporation.php?trang=<?= $i ?>"><?= $i ?></a></li>
+                                        <li <?php if ($i == $page) {
+                                                echo 'style="background:brown;"';
+                                            } else {
+                                                echo '';
+                                            }
+                                            ?>><a href="list-corporation.php?trang=<?= $i ?>"><?= $i ?></a></li>
                                     <?php
                                     }
                                     ?>
