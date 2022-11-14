@@ -3,16 +3,15 @@ include 'includes/header.php';
 require 'middleWare.php';
 
 ?>
-<div class="card-header">           
-                  <h1 style="text-align: center;height: 100px; margin-top: 25px;"> 
-                      DASH BOARD
-                </h1>
-                
-            </div>
+<div class="card-header">
+  <h1 style="text-align: center;height: 100px; margin-top: 25px;">
+    DASH BOARD
+  </h1>
+
+</div>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-
 
       <!-- content -->
       <div class="container-fluid py-4">

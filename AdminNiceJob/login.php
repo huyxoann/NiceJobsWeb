@@ -18,7 +18,7 @@ if (isset($_POST['login_btn'])) {
         redirect("../AdminNiceJob/admin/index.php", "Welcome to Dashboard");
     } else {
         // redirect("../AdminNiceJob/login.php", "The account and password are incorrect. Please re-enter !");
-       $failed = "The account and password are incorrect. Please re-enter !";
+        $failed = "The account and password are incorrect. Please re-enter !";
     }
 }
 ?>
@@ -43,9 +43,9 @@ if (isset($_POST['login_btn'])) {
                             </div>
 
                             <button type="submit " name="login_btn" class="btn btn-primary" style="margin-left: 200px;">Submit</button>
-                        <br>
-                        <br>
-                        <?=$failed ?>
+                            <br>
+                            <br>
+                            <?= $failed ?>
                         </form>
                     </div>
                 </div>
