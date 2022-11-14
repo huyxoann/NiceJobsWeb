@@ -10,7 +10,7 @@ if (isset($_POST['add_corporation_btn'])) {
     $id_corp    = $_POST['id_corp'];
     $corp_name = $_POST['corp_name'];
 
-    $corp_field = $_POST['corp_field'];
+    $corp_field_id = $_POST['corp_field_id'];
     $corp_mail = $_POST['corp_mail'];
     $website = $_POST['website'];
     $address = $_POST['address'];
@@ -20,8 +20,8 @@ if (isset($_POST['add_corporation_btn'])) {
     $image_tmp = $_FILES['image']['tmp_name'];
 
     $query = "INSERT INTO `corporation`
-            (`id_corp`, `corp_name`, `corp_field`, `corp_mail`, `image`, `description`, `website`, `address`) 
-    VALUES ('$id_corp','$corp_name','$corp_field','$corp_mail','$image','$description','$website','$address')";
+            (`id_corp`, `corp_name`, `corp_field_id`, `corp_mail`, `image`, `description`, `website`, `address`) 
+    VALUES ('$id_corp','$corp_name','$corp_field_id','$corp_mail','$image','$description','$website','$address')";
     $query_run = mysqli_query($conn, $query);
     if ($query_run) {
         move_uploaded_file($image_tmp, '../images/' . $image);
@@ -47,9 +47,21 @@ if (isset($_POST['add_corporation_btn'])) {
     }
 
     $query = "UPDATE `corporation` SET 
-            `corp_name`='$corp_name',`corp_field_id`='$corp_field',`corp_mail`='$corp_mail',`image`='$image',`description`='$description',`website`='$website',`address`='$address' 
+            -- `corp_field_id`='$corp_field_id',
+            `corp_name`='$corp_name',`corp_mail`='$corp_mail',`image`='$image',`description`='$description',`website`='$website',`address`='$address' 
             WHERE `id_corp`='$id_corp'
             ";
+    // $query = "UPDATE `corporation` SET 
+    //  `corporation`.`corp_field_id`='$corp_field',
+    // `corporation`.`corp_name`='$corp_name',
+    // -- `corporation`.`image`='$image'
+    // -- `corporation`.`corp_mail`='$corp_mail',
+    // -- `corporation`.`description`='$description',
+    // -- `corporation`.`website`='$website',
+    // -- `corporation`.`address`='$address' 
+    // -- FROM corporation INNER JOIN corp_field ON corporation.corp_field_id = corp_field.field_id 
+    // WHERE `id_corp`='$id_corp'";
+
     $query_run = mysqli_query($conn, $query);
     if ($query_run) {
         redirect("list-corporation.php", "Corporation Update Successfully");

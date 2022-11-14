@@ -1,17 +1,21 @@
 <?php
-include 'includes/header.php';
+require 'includes/header.php';
+require '../functions/myfunctions.php';
+require '../config/connectdb.php';
 
+  $query = mysqli_query($conn,"SELECT * FROM `corporation`");
+  $count = mysqli_num_rows($query);
 
 ?>
-<div class="card-header">           
-                  <h1 style="text-align: center;height: 100px; margin-top: 25px;"> 
-                      DASH BOARD
-                </h1>
-            </div>
+<div class="card-header">
+  <h1 style="text-align: center;height: 100px; margin-top: 25px;">
+    DASH BOARD
+  </h1>
+
+</div>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-
 
       <!-- content -->
       <div class="container-fluid py-4">
@@ -20,11 +24,11 @@ include 'includes/header.php';
             <div class="card">
               <div class="card-header p-3 pt-2">
                 <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                  <i class="material-icons opacity-10">weekend</i>
+                  <i class="material-icons opacity-10">business</i>
                 </div>
                 <div class="text-end pt-1">
-                  <p class="text-sm mb-0 text-capitalize">Today's Money</p>
-                  <h4 class="mb-0">$53k</h4>
+                  <p class="text-sm mb-0 text-capitalize">Total Corporation</p>
+                  <h4 class="mb-0"><?php echo $count  ?></h4>
                 </div>
               </div>
               <hr class="dark horizontal my-0">

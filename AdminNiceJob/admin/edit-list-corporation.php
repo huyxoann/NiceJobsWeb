@@ -56,7 +56,7 @@ include '../config/connectdb.php';
                                 </div>
                                 <div class="col-md-12">
                                     <label for="">Description</label>
-                                    <textarea name="text" rows="3" placeholder="Enter Description" class="form-control"><?= $data['description'] ?></textarea>
+                                    <textarea  name="description" rows="3" placeholder="Enter Description" class="form-control"><?= $data['description'] ?></textarea>
                                 </div>
 
                                 <div class="col-md-12">

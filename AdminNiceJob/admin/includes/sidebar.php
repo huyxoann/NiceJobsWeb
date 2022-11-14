@@ -5,9 +5,9 @@ $page =  substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") +
   <div class="sidenav-header">
     <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
     <a class="navbar-brand m-0" href=" index.php ">
-     
-        <span class="ms-1 font-weight-bold text-white"> NICE JOB </span>
-    
+
+      <span class="ms-1 font-weight-bold text-white"> NICE JOB </span>
+
 
     </a>
   </div>
@@ -30,7 +30,7 @@ $page =  substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") +
           <span class="nav-link-text ms-1">list company</span>
         </a>
       </li>
-      
+
       <li class="nav-item">
         <a class="nav-link text-white <?= $page == "user-admin.php" ? 'active bg-gradient-primary' : ''; ?>" href="user-admin.php">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -39,13 +39,29 @@ $page =  substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") +
           <span class="nav-link-text ms-1">User admin</span>
         </a>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link text-white <?= $page == "users.php" ? 'active bg-gradient-primary' : ''; ?>" href="users.php">
-          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="material-icons opacity-10">person_4</i>
-          </div>
-          <span class="nav-link-text ms-1">Users</span>
+        <a data-bs-toggle="collapse" href="#Users" class="nav-link text-white <?= $page == "users-employee.php" || $page == "users-employer.php" ? 'active collapsed' : ''; ?>" aria-controls="Users" role="button" aria-expanded="true">
+          <i class="material-icons-round opacity-10">person_4</i>
+          <span class="nav-link-text ms-2 ps-1">Users</span>
         </a>
+        <div class="collapse show" id="Users">
+          <ul class="nav ">
+            <li class="nav-item ">
+              <a class="nav-link text-white <?= $page == "users-employer.php" ? 'active bg-gradient-primary' : ''; ?>" href="users-employer.php">
+              <i class="material-icons-round opacity-10">person_3</i>
+                <span class="sidenav-normal  ms-2  ps-1"> Users Employer </span>
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-white <?= $page == "users-employee.php" ? 'active bg-gradient-primary' : ''; ?>" href="users-employee.php">
+              <i class="material-icons-round opacity-10">person_2</i>
+                <span class="sidenav-normal  ms-2  ps-1"> Users Employee </span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
       </li>
 
 
