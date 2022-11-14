@@ -26,7 +26,7 @@ include 'includes/header.php';
                             </div>
                             <div class="col-md-6">
                                 <label for="">Corporation field</label>
-                                <input type="text" name="corp_field" placeholder="Enter Corporation field" class="form-control"required>
+                                <input type="text" name="corp_field_id" placeholder="Enter Corporation field" class="form-control"required>
                             </div>
                             <div class="col-md-6">
                                 <label for="">Corporation email</label>

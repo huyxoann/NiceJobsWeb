@@ -10,39 +10,31 @@ include '../config/connectdb.php';
         <div class="col-md-12">
             <div class="card-header">           
                   <h1 style="text-align: center;height: 50px; margin-top: 25px;"> 
-                DANH SÁCH TÀI KHOẢN USERS
+                TÀI KHOẢN NHÀ TUYỂN DỤNG
                 </h1>
             </div>
-            <div class="card-body">
+            <div class="card-body mt-4">
                 <table class="table table-bordered table-striped">
                     <thead style="text-align: center;">
                         <th>ID_user</th>
                         <th>Username</th>
-                        <th>Image</th>
                         <th>Email</th>
-                        <th>Address</th>
-                        <th>Role</th>
                     </thead>
                     <tbody>
                         <?php
-                        $list = getAll("users");
+                      
+                        // $list = getAll("users");
+                        $query = "SELECT * FROM `users` WHERE `role`=1";
+                        
+                         $query_run = mysqli_query($conn, $query);
                     
-                        if (mysqli_num_rows($list) > 0) {
-                            foreach ($list as $item) {
+                        if (mysqli_num_rows($query_run) > 0) {
+                            foreach ($query_run as $item) {
                         ?>
                                 <tr style="text-align: center;">
                                     <td><?= $item['id_user'] ?></td>                             
                                     <td ><?= $item['username'] ?></td>
-                                    
-                                    <td>
-                                 <img style="width: 100px;height:100px;" src="../images/<?=$item['image']; ?>">
-                                    </td>
-
-                                    <td ><?= $item['email'] ?></td>
-                                    <td ><?= $item['address'] ?></td>
-                                    <td ><?= $item['role'] ?></td>
-
-                                
+                                    <td ><?= $item['email'] ?></td>   
                                 </tr>
                         <?php
                             }

@@ -1,6 +1,6 @@
 <?php
 include 'includes/header.php';
-
+require 'middleWare.php';
 
 ?>
 <div class="card-header">           
