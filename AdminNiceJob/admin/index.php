@@ -7,6 +7,7 @@ require 'middleWare.php';
                   <h1 style="text-align: center;height: 100px; margin-top: 25px;"> 
                       DASH BOARD
                 </h1>
+                
             </div>
 <div class="container">
   <div class="row">

@@ -17,8 +17,8 @@ if (isset($_POST['login_btn'])) {
         setcookie("password", $password, time() + 3600);
         redirect("../AdminNiceJob/admin/index.php", "Welcome to Dashboard");
     } else {
-        redirect("../AdminNiceJob/login.php", "The account and password are incorrect. Please re-enter !");
-        echo "The account and password are incorrect. Please re-enter !";
+        // redirect("../AdminNiceJob/login.php", "The account and password are incorrect. Please re-enter !");
+       $failed = "The account and password are incorrect. Please re-enter !";
     }
 }
 ?>
@@ -29,7 +29,7 @@ if (isset($_POST['login_btn'])) {
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Login Form</h4>
+                        <h4 style="text-align: center;">Login Admin Form</h4>
                     </div>
                     <div class="card-body">
                         <form action="login.php" method="POST">
@@ -42,7 +42,10 @@ if (isset($_POST['login_btn'])) {
                                 <input type="password" name="password" class="form-control" placeholder="Enter your password">
                             </div>
 
-                            <button type="submit" name="login_btn" class="btn btn-primary">Submit</button>
+                            <button type="submit " name="login_btn" class="btn btn-primary" style="margin-left: 200px;">Submit</button>
+                        <br>
+                        <br>
+                        <?=$failed ?>
                         </form>
                     </div>
                 </div>
