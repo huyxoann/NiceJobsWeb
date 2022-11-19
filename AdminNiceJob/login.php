@@ -13,8 +13,8 @@ if (isset($_POST['login_btn'])) {
     $login_query_run = mysqli_query($conn, $login_query);
 
     if (mysqli_num_rows($login_query_run) > 0) {
-        setcookie("username", $username, time() + 3600);
-        setcookie("password", $password, time() + 3600);
+        setcookie("userAdmin", $username, time() + 3600);
+        setcookie("passAdmin", $password, time() + 3600);
         redirect("../AdminNiceJob/admin/index.php", "Welcome to Dashboard");
     } else {
         // redirect("../AdminNiceJob/login.php", "The account and password are incorrect. Please re-enter !");
@@ -45,7 +45,9 @@ if (isset($_POST['login_btn'])) {
                             <button type="submit " name="login_btn" class="btn btn-primary" style="margin-left: 200px;">Submit</button>
                             <br>
                             <br>
-                            <?= $failed ?>
+                            <?php if (isset($failed)) {
+                                echo $failed;
+                            } ?>
                         </form>
                     </div>
                 </div>

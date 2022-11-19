@@ -6,6 +6,7 @@ require '../config/connectdb.php';
 $query = mysqli_query($conn, "SELECT * FROM `corporation`");
 $count = mysqli_num_rows($query);
 
+
 ?>
 <div class="card-header">
   <h1 style="text-align: center;height: 100px; margin-top: 25px;">
@@ -16,7 +17,6 @@ $count = mysqli_num_rows($query);
 <div class="container">
   <div class="row">
     <div class="col-md-12"></div>
-
     <!-- content -->
     <div class="container-fluid py-4">
       <div class="row">

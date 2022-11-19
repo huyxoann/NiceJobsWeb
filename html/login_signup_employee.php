@@ -122,8 +122,12 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
 
         if (mysqli_num_rows($result) > 0) {
             if ($rows['role'] == 0) {
+                setcookie("id_user", $rows['id_user'], time() + 1209600);
                 setcookie("username", $username, time() + 1209600);
                 setcookie("password", $password, time() + 1209600);
+                setcookie("role", $rows['role'], time() + 1209600);
+                setcookie("email", $rows['email'], time() + 1209600);
+                setcookie("date", $rows['created_at'], time() + 1209600);
                 header("location: trangchu.php");
             } else {
                 $notification = "Không tìm thấy thông tin người dùng, vui lòng kiểm tra lại!";

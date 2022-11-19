@@ -1,3 +1,13 @@
+<?php
+ob_start();
+session_start();
+$_SESSION['url_current'] = $_SERVER['PHP_SELF'];
+if (!(isset($_COOKIE["username"]) && isset($_COOKIE["password"]))) {
+    header("location: login_signup_employee.php");
+} else {
+}
+?>
+
 <body>
     <div class="shadow-sm rounded header-content mb-1">
         <div class="col-mb-3 mt-2 ps-4 col-sm" id="logo">
@@ -28,18 +38,23 @@
             ?>
         </div>
         <?php if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) { ?>
+
             <div class="nav-item dropdown mt-3">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" type="button">
                     <?= $_COOKIE['username']; ?>
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="./sign_out.php">Logout</a></li>
-                </ul>
+                <?php if ($_COOKIE['role'] == 0) { ?>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li class="dropdown-item">Mã TK: <?php echo $_COOKIE['id_user'] ?></li>
+                        <li><a class="dropdown-item" href="../html/view_my_info.php">Thông tin cá nhân</a></li>
+                        <li><a class="dropdown-item" href="#">Quản lý CV</a></li>
+                        <li><a class="dropdown-item" href="#">Xem công việc đã lưu</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="./sign_out.php">Logout</a></li>
+                    </ul>
+                <?php } ?>
             </div>
         <?php } else {
         ?>

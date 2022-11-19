@@ -1,5 +1,6 @@
 <?php
 require('../modules/connection.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en, vi">
@@ -15,7 +16,10 @@ require('../modules/connection.php');
     <script src="../css/bootstrap.bundle.min.js"></script>
     <script src="../css/jquery-3.6.0.min.js"></script>
 </head>
-<?php include('../includes/header.php') ?>
+<?php
+require('../includes/header.php');
+require('../modules/add_users_info.php');
+?>
 <div class="content container">
     <div class="jobs-content">
         <div class="header-jobs-content">
