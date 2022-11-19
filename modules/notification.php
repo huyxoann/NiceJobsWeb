@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-warning" role="alert">
                     <?php echo $notification ?>
                 </div>
             </div>

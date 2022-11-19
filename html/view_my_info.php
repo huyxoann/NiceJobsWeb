@@ -6,17 +6,15 @@ function split_date($date)
     $convertToTime = strtotime($date);
     return date('d-m-Y', $convertToTime);
 }
-if (isset($_POST['change']) && $_POST["change"]) {
+if (isset($_POST['change'])) {
     $username = $_COOKIE['username'];
     $old_password = mysqli_real_escape_string($conn, $_POST['old_password']);
-    $old_password = md5($old_password);
-
-    $sql = "SELECT * FROM `users` WHERE username = '$username' AND password = '$old_password'";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) > 0) {
-        $new_password = mysqli_real_escape_string($conn, $_POST['new_password']);
-        $re_password = mysqli_real_escape_string($conn, $_POST['re_new_password']);
+    $new_password = mysqli_real_escape_string($conn, $_POST['new_password']);
+    $re_password = mysqli_real_escape_string($conn, $_POST['re_new_password']);
+    if (!md5($old_password) === $_COOKIE['password']) {
+        $notification = "Nhập mật khẩu không đúng vui lòng nhập lại!";
+        header("view_my_info.php");
+    } else {
         if ($new_password === $re_password) {
             if (!preg_match('/^(?=.{8,32})(((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]))).*$/', $new_password)) {
                 $notification = "Mật khẩu nhập không đúng định dạng, vui lòng nhập lại";
@@ -33,11 +31,9 @@ if (isset($_POST['change']) && $_POST["change"]) {
             $notification = "Mật khẩu nhập không giống nhau. Vui lòng nhập lại.";
             header("view_my_info.php");
         }
-    } else {
-        $notification = "Nhập không đúng mật khẩu!";
-        header("view_my_info.php");
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
