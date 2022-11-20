@@ -1,5 +1,5 @@
 <?php if (isset($notification)) { ?>
-    <div class="toast-container ">
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
                 <img src="../images/Basic_red_dot.png" class="rounded me-2" alt="..." style="width: 20px;">

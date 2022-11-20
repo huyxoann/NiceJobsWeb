@@ -12,6 +12,7 @@ include '../config/connectdb.php';
                 <h1 style="text-align: center;height: 50px; margin-top: 25px;">
                     TÀI KHOẢN NHÂN VIÊN
                 </h1>
+                <button type="button" class="btn btn-success float-end  w-15"><a href="add-users-employee.php">Add</a></button>
             </div>
             <div class="card-body mt-4">
                 <table class="table table-bordered table-striped">
@@ -19,13 +20,12 @@ include '../config/connectdb.php';
                         <th>ID_user</th>
                         <th>Username</th>
                         <th>Email</th>
+                        <th>Avatar</th>
                     </thead>
                     <tbody>
                         <?php
 
-                        // $list = getAll("users");
-                        $query = "SELECT * FROM `users` WHERE `role`=0";
-
+                        $query = "SELECT users.id_user, `username`, `email`, `created_at`,`image` FROM `users`INNER JOIN `employee` ON users.id_user = employee.id_user WHERE `role`=0;";
                         $query_run = mysqli_query($conn, $query);
 
                         if (mysqli_num_rows($query_run) > 0) {
@@ -35,6 +35,9 @@ include '../config/connectdb.php';
                                     <td><?= $item['id_user'] ?></td>
                                     <td><?= $item['username'] ?></td>
                                     <td><?= $item['email'] ?></td>
+                                    <td>
+                                        <img style="width: 100px;height:100px;" src="../images/<?= $item['avatar']; ?>">
+                                    </td>
                                 </tr>
                         <?php
                             }

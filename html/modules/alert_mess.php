@@ -1,7 +1,7 @@
 <?php
 function show($message)
 {
-    return '
+    echo '
     <div class="alert alert-danger" role="alert">
         ' . $message . '
     </div>';

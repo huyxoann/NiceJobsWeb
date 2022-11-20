@@ -1,6 +1,6 @@
 <?php
 include 'includes/header.php';
- require_once '../functions/myfunctions.php';
+require_once '../functions/myfunctions.php';
 include '../config/connectdb.php';
 
 ?>
@@ -8,10 +8,11 @@ include '../config/connectdb.php';
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card-header">           
-                  <h1 style="text-align: center;height: 50px; margin-top: 25px;"> 
-                TÀI KHOẢN NHÀ TUYỂN DỤNG
+            <div class="card-header">
+                <h1 style="text-align: center;height: 50px; margin-top: 25px;">
+                    TÀI KHOẢN NHÀ TUYỂN DỤNG
                 </h1>
+                <button type="button" class="btn btn-success float-end  w-15"><a href="add-users-employer.php">Add</a></button>
             </div>
             <div class="card-body mt-4">
                 <table class="table table-bordered table-striped">
@@ -19,22 +20,25 @@ include '../config/connectdb.php';
                         <th>ID_user</th>
                         <th>Username</th>
                         <th>Email</th>
+                        <th>Avatar</th>
                     </thead>
                     <tbody>
                         <?php
-                      
-                        // $list = getAll("users");
-                        $query = "SELECT * FROM `users` WHERE `role`=1";
-                        
-                         $query_run = mysqli_query($conn, $query);
-                    
+
+                        $query = "SELECT users.id_user, `username`, `email`,`image` FROM `users`INNER JOIN `employer` ON users.id_user = employer.id_user WHERE `role`=1;";
+                        // $query = "SELECT * FROM `users` WHERE `role`=1";      
+                        $query_run = mysqli_query($conn, $query);
+
                         if (mysqli_num_rows($query_run) > 0) {
                             foreach ($query_run as $item) {
                         ?>
                                 <tr style="text-align: center;">
-                                    <td><?= $item['id_user'] ?></td>                             
-                                    <td ><?= $item['username'] ?></td>
-                                    <td ><?= $item['email'] ?></td>   
+                                    <td><?= $item['id_user'] ?></td>
+                                    <td><?= $item['username'] ?></td>
+                                    <td><?= $item['email'] ?></td>
+                                    <td>
+                                        <img style="width: 100px;height:100px;" src="../images/<?= $item['avatar']; ?>">
+                                    </td>
                                 </tr>
                         <?php
                             }

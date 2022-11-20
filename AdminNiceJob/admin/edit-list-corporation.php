@@ -19,7 +19,7 @@ include '../config/connectdb.php';
                     <div class="card">
                         <!-- card-header -->
                         <div class="card-header">
-                            <h4>Edit User Corporation</h4>
+                            <h2 style="text-align: center;"> Edit List Corporation</h2>
                         </div>
                         <!-- card-body -->
                         <div class="card-body">

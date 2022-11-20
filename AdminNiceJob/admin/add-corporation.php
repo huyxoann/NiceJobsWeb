@@ -52,7 +52,7 @@ include 'includes/header.php';
                             
                            
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary" name="add_corporation_btn">Save</button>
+                                <button type="submit" class="btn btn-primary mt-3" name="add_corporation_btn">Save</button>
                             </div>
                         </div>
                     </form>

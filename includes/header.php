@@ -83,3 +83,23 @@
         <br>
         <button type="button" class="btn btn-primary me-2 buttonHiden"><a href="../html/login_signup_employer.php" style="color: #f9f9f9;">Đăng tuyển và tìm nhân sự</a></button>
     </div>
+    <div class="cv_check container ">
+        <?php
+        if ($_COOKIE['role'] == 0) {
+            require_once("../html/modules/connection.php");
+
+            $id_user = $_COOKIE['id_user'];
+            $query = "SELECT * FROM cv WHERE id_user = '$id_user' ";
+            $result = mysqli_query($conn, $query);
+
+            if (!mysqli_num_rows($result)) {
+                echo '
+                <div class="alert alert-warning" role="alert">
+                Người dùng cần tải lên CV trước khi thực hiện tìm việc! Nhấn vào <a href="https://vieclam24h.vn/cv/danh-sach-cv.html">Đây </a>để tạo.
+                Để upload cv, nhấn vào <a href="../html/hoso_cv.php">Đây</a>.
+                </div>
+                ';
+            }
+        }
+        ?>
+    </div>

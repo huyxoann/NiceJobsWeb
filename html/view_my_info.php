@@ -1,5 +1,6 @@
 <?php
-require('../html/modules/connection.php');
+require('./modules/connection.php');
+include('./modules/notification.php');
 $date = $_COOKIE['date'];
 function split_date($date)
 {
@@ -273,7 +274,7 @@ if (isset($_POST['change'])) {
                 </div>
                 <div class="modal-body">
                     <p>Một vài thông tin quan trọng có thể sẽ không thể thay đổi được!</p>
-                    <form action="../html/modules/modify_user_info.php" method="post" enctype="multipart/form-data">
+                    <form action="./modules/modify_user_info.php" method="post" enctype="multipart/form-data">
                         <div class="col-md-12">
                             <h2>Thông tin tài khoản</h2>
                             <?php
@@ -288,7 +289,6 @@ if (isset($_POST['change'])) {
                                                 <p>Họ và tên: </p>
                                             </td>
                                             <td>
-                                                <!-- <p class="form-control ms-5"><?php echo $data2['fullname'] ?></p> -->
                                                 <input class="form-control ms-5" type="text" name="fullname" id="fullname" value="<?php echo $data2['fullname'] ?>">
                                             </td>
                                         </tr>
@@ -335,14 +335,7 @@ if (isset($_POST['change'])) {
                                                 <input class="form-control ms-5" type="text" name="phone_number" id="phone_number" value="<?php echo $data2['phone_number'] ?>">
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <p>Ảnh avatar: </p>
-                                            </td>
-                                            <td>
-                                                <input name="img" type="file" class="form-control ms-5" id="inputGroupFile01">
-                                            </td>
-                                        </tr>
+
                                     </table>
                                 <?php } ?>
                                 <?php } elseif ($_COOKIE['role'] == 1) {
@@ -404,14 +397,7 @@ if (isset($_POST['change'])) {
                                                 <input class="form-control ms-5" type="text" name="phone_number" id="phone_number" value="<?php echo $data2['phone_number'] ?>">
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <p>Ảnh avatar: </p>
-                                            </td>
-                                            <td>
-                                                <input name="image" type="file" class="form-control ms-5" id="inputGroupFile01">
-                                            </td>
-                                        </tr>
+
                                     </table>
                                 <?php } ?>
                             <?php } ?>

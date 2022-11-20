@@ -38,44 +38,44 @@ require('../html/modules/add_users_info.php');
             <div class="collapse" id="collapseMenuChoose">
                 <div class="select">
                     <div class="form-group">
-                        <select class="form-control select">
-                            <option value="0">Ngành nghề</option>
+                        <select name="career" class="form-control select">
+                            <option value="0">Tất cả ngành nghề</option>
                             <?php
                             require_once('../html/modules/import_career.php');
                             ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <select class="form-control select">
-                            <option value="0">Lĩnh vực công ty</option>
+                        <select name="corp_field" class="form-control select">
+                            <option value="0">Tất cả lĩnh vực công ty</option>
                             <?php require_once('../html/modules/import_field.php') ?>
                         </select>
                     </div>
                 </div>
                 <div class="select">
                     <div class="form-group">
-                        <select class="form-control select">
-                            <option value="0">Địa điểm</option>
+                        <select name="province" class="form-control select">
+                            <option value="0">Tất cả địa điểm</option>
                             <?php require_once('../html/modules/import_province.php') ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <select class="form-control select">
-                            <option value="0">Cấp bậc</option>
+                        <select name="level" class="form-control select">
+                            <option value="0">Tất cả cấp bậc</option>
                             <?php require_once('../html/modules/import_level.php') ?>
                         </select>
                     </div>
                 </div>
                 <div class="select">
                     <div class="form-group">
-                        <select class="form-control select">
-                            <option value="0">Hình thức làm việc</option>
+                        <select name="wtw" class="form-control select">
+                            <option value="0">Tất cả hình thức làm việc</option>
                             <?php require_once('../html/modules/import_way_to_work.php') ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <select class="form-control select">
-                            <option value="">Mức lương</option>
+                        <select name="salary" class="form-control select">
+                            <option value="0">Tất cả mức lương</option>
                             <?php require_once('../html/modules/import_salary.php') ?>
                         </select>
                     </div>

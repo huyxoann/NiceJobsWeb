@@ -1,6 +1,6 @@
 <?php
-require("../html/modules/connection.php");
-include('../html/modules/alert_mess.php');
+require("connection.php");
+include('alert_mess.php');
 if (isset($_POST['saveInfo']) && $_POST['saveInfo']) {
     $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
@@ -12,7 +12,7 @@ if (isset($_POST['saveInfo']) && $_POST['saveInfo']) {
         $employee_query = "INSERT INTO employee (fullname, gender, phone_number, image, id_user) VALUES('$full_name', '$gender', '$phone_number', '$image', '$id_user')";
         if ($conn->query($employee_query)) {
             move_uploaded_file($image_temp, '../images/users/' . $image);
-            header("Location: ../html/trangchu.php");
+            header("Location: trangchu.php");
         } else {
             $notification = "Thêm thông tin không thành công, vui lòng kiểm tra lại!";
         }

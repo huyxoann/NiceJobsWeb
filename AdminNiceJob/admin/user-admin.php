@@ -13,7 +13,6 @@ include '../config/connectdb.php';
                     DANH SÁCH TÀI KHOẢN ADMIN
                 </h1>
                 <button type="button" class="btn btn-success float-end  w-15"><a href="add-user-admin.php">Add</a></button>
-
             </div>
             <div class="card-body" style="text-align: center;">
                 <table class="table table-bordered table-striped">
