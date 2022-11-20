@@ -1,5 +1,6 @@
-<?php require('../modules/connection.php');
-include("../modules/xu_ly_du_lieu.php");
+<?php require('../html/modules/connection.php');
+include("../html/modules/xu_ly_du_lieu.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +37,7 @@ include("../modules/xu_ly_du_lieu.php");
                         <div class="modal-body">
                             <h6>Bước cuối để hoàn tất việc đăng kí của bạn, vui lòng nhập những thông tin bên dưới để bắt đầu công việc của bạn!</h6>
                             <p>Nhập thông tin chính xác để nhà tuyển dụng có thể dễ dàng liên lạc với bạn!</p>
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="xu_ly_du_lieu.php" method="post" enctype="multipart/form-data">
                                 <div class="form-control">
                                     <div class="row mt-3">
                                         <div class="col-md-6">
@@ -94,7 +95,7 @@ include("../modules/xu_ly_du_lieu.php");
                         <div class="modal-body">
                             <p>Nhập thông tin chính xác để chúng tôi biết bạn là ai.</p>
                             <p>Bạn có thể cập nhật lại ở mục "Thay đổi thông tin người dùng".</p>
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <form action="xu_ly_du_lieu.php" method="post" enctype="multipart/form-data">
                                 <h2 class="">Thông tin của bạn</h2>
                                 <div class="form-control ">
                                     <div class="row mt-3">
@@ -167,7 +168,7 @@ include("../modules/xu_ly_du_lieu.php");
                                                 <span class="input-group-text">Lĩnh vực công ty *</span>
                                                 <select name="corp_field" class="form-control select">
                                                     <option value="0">Lĩnh vực công ty</option>
-                                                    <?php require_once('../modules/import_field.php') ?>
+                                                    <?php require_once('../html/modules/import_field.php') ?>
                                                 </select>
                                             </div>
                                         </div>

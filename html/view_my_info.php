@@ -1,10 +1,14 @@
 <?php
-require('../modules/connection.php');
+require('../html/modules/connection.php');
 $date = $_COOKIE['date'];
 function split_date($date)
 {
     $convertToTime = strtotime($date);
     return date('d-m-Y', $convertToTime);
+}
+if (!(isset($_COOKIE["username"]) && isset($_COOKIE["password"]))) {
+    header("location: login_signup_employee.php");
+} else {
 }
 if (isset($_POST['change'])) {
     $username = $_COOKIE['username'];
@@ -74,79 +78,156 @@ if (isset($_POST['change'])) {
                 </div>
                 <div class="col-md-6">
                     <h2 class="text-center">Thông tin tài khoản</h2>
+                    <!-- Dữ liệu của employee -->
                     <?php
-                    $query2 = "SELECT users.username, users.email, employee.fullname, employee.gender, employee.phone_number, employee.id_user FROM users INNER JOIN employee ON users.id_user=employee.id_user WHERE users.id_user = employee.id_user";
-                    $result2 = mysqli_query($conn, $query2);
-                    while ($data2 = mysqli_fetch_assoc($result2)) {
+                    if ($_COOKIE['role'] == 0) {
+                        $query2 = "SELECT users.username, users.email, employee.fullname, employee.gender, employee.phone_number, employee.id_user FROM users INNER JOIN employee ON users.id_user=employee.id_user WHERE users.id_user = '$username'";
+                        $result2 = mysqli_query($conn, $query2);
+                        while ($data2 = mysqli_fetch_assoc($result2)) {
                     ?>
+                            <table class="d-flex justify-content-center">
+                                <tr>
+                                    <td>
+                                        <p>Họ và tên: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5"><?php echo $data2['fullname'] ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Email: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5"><?php echo $data2['email'] ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Tên tài khoản: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5"><?php echo $data2['username'] ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Mã tài khoản: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5"><?php echo $data2['id_user'] ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Giới tính: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5">
+                                            <?php if ($data2['gender'] == 0) {
+                                                echo "Nam";
+                                            } else {
+                                                echo "Nữ";
+                                            } ?>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Số điện thoại: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5">
+                                            <?php echo $data2['phone_number'] ?>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                                            Cập nhật thông tin
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        <?php } ?>
+                        <!-- Dữ liệu của employer -->
+                        <?php } elseif ($_COOKIE['role'] == 1) {
+                        $query2 = "SELECT users.username, users.email, employer.fullname, employer.gender, employer.phone_number, employer.id_user FROM users INNER JOIN employer ON users.id_user=employer.id_user WHERE users.id_user = '$username'";
+                        $result2 = mysqli_query($conn, $query2);
+                        while ($data2 = mysqli_fetch_assoc($result2)) {
+                        ?>
 
-                        <table class="d-flex justify-content-center">
-                            <tr>
-                                <td>
-                                    <p>Họ và tên: </p>
-                                </td>
-                                <td>
-                                    <p class="form-control ms-5"><?php echo $data2['fullname'] ?></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Email: </p>
-                                </td>
-                                <td>
-                                    <p class="form-control ms-5"><?php echo $data2['email'] ?></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Tên tài khoản: </p>
-                                </td>
-                                <td>
-                                    <p class="form-control ms-5"><?php echo $data2['username'] ?></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Mã tài khoản: </p>
-                                </td>
-                                <td>
-                                    <p class="form-control ms-5"><?php echo $data2['id_user'] ?></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Giới tính: </p>
-                                </td>
-                                <td>
-                                    <p class="form-control ms-5">
-                                        <?php if ($data2['gender'] == 0) {
-                                            echo "Nam";
-                                        } else {
-                                            echo "Nữ";
-                                        } ?>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Số điện thoại: </p>
-                                </td>
-                                <td>
-                                    <p class="form-control ms-5">
-                                        <?php echo $data2['phone_number'] ?>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                                        Cập nhật thông tin
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
+                            <table class="d-flex justify-content-center">
+                                <tr>
+                                    <td>
+                                        <p>Họ và tên: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5"><?php echo $data2['fullname'] ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Email: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5"><?php echo $data2['email'] ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Tên tài khoản: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5"><?php echo $data2['username'] ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Mã tài khoản: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5"><?php echo $data2['id_user'] ?></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Giới tính: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5">
+                                            <?php if ($data2['gender'] == 0) {
+                                                echo "Nam";
+                                            } else {
+                                                echo "Nữ";
+                                            } ?>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>Số điện thoại: </p>
+                                    </td>
+                                    <td>
+                                        <p class="form-control ms-5">
+                                            <?php echo $data2['phone_number'] ?>
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                                            Cập nhật thông tin
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        <?php } ?>
                     <?php } ?>
                 </div>
             </div>
@@ -184,7 +265,7 @@ if (isset($_POST['change'])) {
         </div>
     </div>
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-        <div class="modal-dialog modal-l">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Cập nhật thông tin người dùng</h1>
@@ -192,69 +273,147 @@ if (isset($_POST['change'])) {
                 </div>
                 <div class="modal-body">
                     <p>Một vài thông tin quan trọng có thể sẽ không thể thay đổi được!</p>
-                    <form action="../modules/modify_user_info.php" method="post" enctype="multipart/form-data">
-                        <div class="col-md-9">
+                    <form action="../html/modules/modify_user_info.php" method="post" enctype="multipart/form-data">
+                        <div class="col-md-12">
                             <h2>Thông tin tài khoản</h2>
                             <?php
-                            $query2 = "SELECT users.username, users.email, employee.fullname, employee.gender, employee.phone_number, employee.id_user FROM users INNER JOIN employee ON users.id_user=employee.id_user WHERE users.id_user = employee.id_user";
-                            $result2 = mysqli_query($conn, $query2);
-                            while ($data2 = mysqli_fetch_assoc($result2)) {
+                            if ($_COOKIE['role'] == 0) {
+                                $query2 = "SELECT users.username, users.email, employee.fullname, employee.gender, employee.phone_number, employee.id_user FROM users INNER JOIN employee ON users.id_user=employee.id_user WHERE users.id_user = '$username'";
+                                $result2 = mysqli_query($conn, $query2);
+                                while ($data2 = mysqli_fetch_assoc($result2)) {
                             ?>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <p>Họ và tên: </p>
-                                        </td>
-                                        <td>
-                                            <!-- <p class="form-control ms-5"><?php echo $data2['fullname'] ?></p> -->
-                                            <input class="form-control ms-5" type="text" name="fullname" id="fullname" value="<?php echo $data2['fullname'] ?>">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Email: </p>
-                                        </td>
-                                        <td>
-                                            <input class="form-control ms-5" type="text" name="email" id="email" value="<?php echo $data2['email'] ?>" disabled>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Tên tài khoản: </p>
-                                        </td>
-                                        <td>
-                                            <input class="form-control ms-5" type="text" name="username" id="username" value="<?php echo $data2['username'] ?>" disabled>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Mã tài khoản: </p>
-                                        </td>
-                                        <td>
-                                            <input class="form-control ms-5" type="text" name="id_user" id="id_user" value="<?php echo $data2['id_user'] ?>" disabled>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Giới tính: </p>
-                                        </td>
-                                        <td>
+                                    <table class="align-middle">
+                                        <tr>
+                                            <td>
+                                                <p>Họ và tên: </p>
+                                            </td>
+                                            <td>
+                                                <!-- <p class="form-control ms-5"><?php echo $data2['fullname'] ?></p> -->
+                                                <input class="form-control ms-5" type="text" name="fullname" id="fullname" value="<?php echo $data2['fullname'] ?>">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Email: </p>
+                                            </td>
+                                            <td>
+                                                <input class="form-control ms-5" type="text" name="email" id="email" value="<?php echo $data2['email'] ?>" disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Tên tài khoản: </p>
+                                            </td>
+                                            <td>
+                                                <input class="form-control ms-5" type="text" name="username" id="username" value="<?php echo $data2['username'] ?>" disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Mã tài khoản: </p>
+                                            </td>
+                                            <td>
+                                                <input class="form-control ms-5" type="text" name="id_user" id="id_user" value="<?php echo $data2['id_user'] ?>" disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Giới tính: </p>
+                                            </td>
+                                            <td>
+                                                <select name="gender" class="form-select ms-5" id="inputGroupSelect01" required>
+                                                    <option value="0" selected>Nam</option>
+                                                    <option value="1">Nữ</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Số điện thoại: </p>
+                                            </td>
+                                            <td>
+                                                <input class="form-control ms-5" type="text" name="phone_number" id="phone_number" value="<?php echo $data2['phone_number'] ?>">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Ảnh avatar: </p>
+                                            </td>
+                                            <td>
+                                                <input name="img" type="file" class="form-control ms-5" id="inputGroupFile01">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                <?php } ?>
+                                <?php } elseif ($_COOKIE['role'] == 1) {
+                                $query2 = "SELECT users.username, users.email, employer.fullname, employer.gender, employer.phone_number, employer.id_user FROM users INNER JOIN employer ON users.id_user=employer.id_user WHERE users.id_user = '$username'";
+                                $result2 = mysqli_query($conn, $query2);
+                                while ($data2 = mysqli_fetch_assoc($result2)) {
+                                ?>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <p>Họ và tên: </p>
+                                            </td>
+                                            <td>
+                                                <!-- <p class="form-control ms-5"><?php echo $data2['fullname'] ?></p> -->
+                                                <input class="form-control ms-5" type="text" name="fullname" id="fullname" value="<?php echo $data2['fullname'] ?>">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Email: </p>
+                                            </td>
+                                            <td>
+                                                <input class="form-control ms-5" type="text" name="email" id="email" value="<?php echo $data2['email'] ?>" disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Tên tài khoản: </p>
+                                            </td>
+                                            <td>
+                                                <input class="form-control ms-5" type="text" name="username" id="username" value="<?php echo $data2['username'] ?>" disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Mã tài khoản: </p>
+                                            </td>
+                                            <td>
+                                                <input class="form-control ms-5" type="text" name="id_user" id="id_user" value="<?php echo $data2['id_user'] ?>" disabled>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Giới tính: </p>
+                                            </td>
+                                            <td>
 
-                                            <select name="gender" class="form-select ms-5" id="inputGroupSelect01" required>
-                                                <option value="0" selected>Nam</option>
-                                                <option value="1">Nữ</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p>Số điện thoại: </p>
-                                        </td>
-                                        <td>
-                                            <input class="form-control ms-5" type="text" name="phone_number" id="phone_number" value="<?php echo $data2['phone_number'] ?>">
-                                        </td>
-                                    </tr>
-                                </table>
+                                                <select name="gender" class="form-select ms-5" id="inputGroupSelect01" required>
+                                                    <option value="0" selected>Nam</option>
+                                                    <option value="1">Nữ</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Số điện thoại: </p>
+                                            </td>
+                                            <td>
+                                                <input class="form-control ms-5" type="text" name="phone_number" id="phone_number" value="<?php echo $data2['phone_number'] ?>">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p>Ảnh avatar: </p>
+                                            </td>
+                                            <td>
+                                                <input name="image" type="file" class="form-control ms-5" id="inputGroupFile01">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                <?php } ?>
                             <?php } ?>
                         </div>
                 </div>
@@ -266,7 +425,7 @@ if (isset($_POST['change'])) {
             </div>
         </div>
     </div>
-    <?php include_once('../modules/notification.php') ?>
+    <?php include_once('../html/modules/notification.php') ?>
 </body>
 
 </html>

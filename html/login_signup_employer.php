@@ -4,11 +4,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../modules/PHPMailer/src/Exception.php';
-require '../modules/PHPMailer/src/PHPMailer.php';
-require '../modules/PHPMailer/src/SMTP.php';
+require '../html/modules/PHPMailer/src/Exception.php';
+require '../html/modules/PHPMailer/src/PHPMailer.php';
+require '../html/modules/PHPMailer/src/SMTP.php';
 
-require('../modules/connection.php');
+require('../html/modules/connection.php');
 if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
     header("location: trangchu.php");
 } else {
@@ -127,6 +127,7 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
                 setcookie("password", $password, time() + 1209600);
                 setcookie("role", $rows['role'], time() + 1209600);
                 setcookie("email", $rows['email'], time() + 1209600);
+                setcookie("date", $rows['created_at'], time() + 1209600);
                 header("location: trangchu.php");
             } else {
                 $notification = "Không tìm thấy thông tin người dùng, vui lòng kiểm tra lại!";

@@ -1,5 +1,5 @@
 <?php
-require('../modules/connection.php');
+require('../html/modules/connection.php');
 
 if (isset($_POST['validate']) && $_POST['validate']) {
     $validate_code = '' . $_POST['first'] . $_POST['second'] . $_POST['third'] . $_POST['fourth'] . $_POST['fifth'] . $_POST['sixth'];

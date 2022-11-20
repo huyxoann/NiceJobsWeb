@@ -1,13 +1,13 @@
 <?php
-require('../modules/connection.php');
+require('../html/modules/connection.php');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../modules/PHPMailer/src/Exception.php';
-require '../modules/PHPMailer/src/PHPMailer.php';
-require '../modules/PHPMailer/src/SMTP.php';
+require '../html/modules/PHPMailer/src/Exception.php';
+require '../html/modules/PHPMailer/src/PHPMailer.php';
+require '../html/modules/PHPMailer/src/SMTP.php';
 
 if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
     header("location:trangchu.php");

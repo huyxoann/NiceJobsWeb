@@ -1,6 +1,6 @@
 <?php
-require("../modules/connection.php");
-include('../modules/alert_mess.php');
+require("../html/modules/connection.php");
+include('../html/modules/alert_mess.php');
 if (isset($_POST['saveInfo']) && $_POST['saveInfo']) {
     $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
@@ -35,7 +35,7 @@ if (isset($_POST['saveInfo']) && $_POST['saveInfo']) {
             move_uploaded_file($image_tmp, '../images/corps/' . $corp_img);
             header("Location: ../html/trangchu.php");
         }
-        $employer_query = "INSERT INTO employer (fullname, gender, phone_number, avatar, id_user, id_corp) VALUES('$full_name', '$gender', '$phone_number', '$avatar_img', '$id_user', '$id_corp')";
+        $employer_query = "INSERT INTO employer (fullname, gender, phone_number, image, id_user, id_corp) VALUES('$full_name', '$gender', '$phone_number', '$avatar_img', '$id_user', '$id_corp')";
         if ($conn->query($employer_query)) {
             header("Location: ../html/trangchu.php");
         }

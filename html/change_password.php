@@ -1,25 +1,29 @@
 <?php
-require('../modules/connection.php');
-if (isset($_POST['submit'])) {
-    $new_password = mysqli_real_escape_string($conn, $_POST['new_password']);
-    $re_password = mysqli_real_escape_string($conn, $_POST['re_new_password']);
-    $username = $_COOKIE['username_temp'];
-    if ($new_password === $re_password) {
-        if (!preg_match('/^(?=.{8,32})(((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]))).*$/', $new_password)) {
-            $notification = "Mật khẩu nhập không đúng định dạng, vui lòng nhập lại";
-            header("change_password.php");
-        } else {
-            $new_password = md5($new_password);
-            $sql = "UPDATE users SET password = '$new_password' WHERE username = '$username'";
-            if ($conn->query($sql)) {
-                $password_changed = true;
-                setcookie('username_temp', '', time() - 3600);
-                header('change_password.php');
+require('../html/modules/connection.php');
+if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+    header("Location: trangchu.php");
+} else {
+    if (isset($_POST['submit'])) {
+        $new_password = mysqli_real_escape_string($conn, $_POST['new_password']);
+        $re_password = mysqli_real_escape_string($conn, $_POST['re_new_password']);
+        $username = $_COOKIE['username_temp'];
+        if ($new_password === $re_password) {
+            if (!preg_match('/^(?=.{8,32})(((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]))).*$/', $new_password)) {
+                $notification = "Mật khẩu nhập không đúng định dạng, vui lòng nhập lại";
+                header("change_password.php");
+            } else {
+                $new_password = md5($new_password);
+                $sql = "UPDATE users SET password = '$new_password' WHERE username = '$username'";
+                if ($conn->query($sql)) {
+                    $password_changed = true;
+                    setcookie('username_temp', '', time() - 3600);
+                    header('change_password.php');
+                }
             }
+        } else {
+            $notification = "Mật khẩu nhập không giống nhau. Vui lòng nhập lại.";
+            header("change_password.php");
         }
-    } else {
-        $notification = "Mật khẩu nhập không giống nhau. Vui lòng nhập lại.";
-        header("change_password.php");
     }
 }
 
@@ -59,7 +63,7 @@ if (isset($_POST['submit'])) {
             </form>
         </div>
     </div>
-    <?php include('../modules/notification.php') ?>
+    <?php include('../html/modules/notification.php') ?>
 </body>
 
 </html>

@@ -5,9 +5,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../modules/PHPMailer/src/Exception.php';
-require '../modules/PHPMailer/src/PHPMailer.php';
-require '../modules/PHPMailer/src/SMTP.php';
+require '../html/modules/PHPMailer/src/Exception.php';
+require '../html/modules/PHPMailer/src/PHPMailer.php';
+require '../html/modules/PHPMailer/src/SMTP.php';
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 

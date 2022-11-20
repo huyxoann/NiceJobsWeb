@@ -1,13 +1,3 @@
-<?php
-ob_start();
-session_start();
-$_SESSION['url_current'] = $_SERVER['PHP_SELF'];
-if (!(isset($_COOKIE["username"]) && isset($_COOKIE["password"]))) {
-    header("location: login_signup_employee.php");
-} else {
-}
-?>
-
 <body>
     <div class="shadow-sm rounded header-content mb-1">
         <div class="col-mb-3 mt-2 ps-4 col-sm" id="logo">
@@ -34,7 +24,7 @@ if (!(isset($_COOKIE["username"]) && isset($_COOKIE["password"]))) {
         </div>
         <div class="mt-3 justify-content-end button-header">
             <?php
-            require('../modules/check_role_by_username.php')
+            require('../html/modules/check_role_by_username.php')
             ?>
         </div>
         <?php if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) { ?>
@@ -44,6 +34,17 @@ if (!(isset($_COOKIE["username"]) && isset($_COOKIE["password"]))) {
                     <?= $_COOKIE['username']; ?>
                 </a>
                 <?php if ($_COOKIE['role'] == 0) { ?>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li class="dropdown-item">Mã TK: <?php echo $_COOKIE['id_user'] ?></li>
+                        <li><a class="dropdown-item" href="../html/view_my_info.php">Thông tin cá nhân</a></li>
+                        <li><a class="dropdown-item" href="#">Quản lý CV</a></li>
+                        <li><a class="dropdown-item" href="#">Xem công việc đã lưu</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="./sign_out.php">Logout</a></li>
+                    </ul>
+                <?php } elseif ($_COOKIE['role'] == 1) { ?>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li class="dropdown-item">Mã TK: <?php echo $_COOKIE['id_user'] ?></li>
                         <li><a class="dropdown-item" href="../html/view_my_info.php">Thông tin cá nhân</a></li>

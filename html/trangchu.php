@@ -1,5 +1,5 @@
 <?php
-require('../modules/connection.php');
+require('../html/modules/connection.php');
 
 ?>
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ require('../modules/connection.php');
 </head>
 <?php
 require('../includes/header.php');
-require('../modules/add_users_info.php');
+require('../html/modules/add_users_info.php');
 ?>
 <div class="content container">
     <div class="jobs-content">
@@ -41,14 +41,14 @@ require('../modules/add_users_info.php');
                         <select class="form-control select">
                             <option value="0">Ngành nghề</option>
                             <?php
-                            require_once('../modules/import_career.php');
+                            require_once('../html/modules/import_career.php');
                             ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control select">
                             <option value="0">Lĩnh vực công ty</option>
-                            <?php require_once('../modules/import_field.php') ?>
+                            <?php require_once('../html/modules/import_field.php') ?>
                         </select>
                     </div>
                 </div>
@@ -56,13 +56,13 @@ require('../modules/add_users_info.php');
                     <div class="form-group">
                         <select class="form-control select">
                             <option value="0">Địa điểm</option>
-                            <?php require_once('../modules/import_province.php') ?>
+                            <?php require_once('../html/modules/import_province.php') ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control select">
                             <option value="0">Cấp bậc</option>
-                            <?php require_once('../modules/import_level.php') ?>
+                            <?php require_once('../html/modules/import_level.php') ?>
                         </select>
                     </div>
                 </div>
@@ -70,13 +70,13 @@ require('../modules/add_users_info.php');
                     <div class="form-group">
                         <select class="form-control select">
                             <option value="0">Hình thức làm việc</option>
-                            <?php require_once('../modules/import_way_to_work.php') ?>
+                            <?php require_once('../html/modules/import_way_to_work.php') ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <select class="form-control select">
                             <option value="">Mức lương</option>
-                            <?php require_once('../modules/import_salary.php') ?>
+                            <?php require_once('../html/modules/import_salary.php') ?>
                         </select>
                     </div>
                 </div>
