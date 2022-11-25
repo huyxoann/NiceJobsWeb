@@ -37,7 +37,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li class="dropdown-item">Mã TK: <?php echo $_COOKIE['id_user'] ?></li>
                         <li><a class="dropdown-item" href="../html/view_my_info.php">Thông tin cá nhân</a></li>
-                        <li><a class="dropdown-item" href="#">Quản lý CV</a></li>
+                        <li><a class="dropdown-item" href="../html/hoso_cv.php">Quản lý CV</a></li>
                         <li><a class="dropdown-item" href="#">Xem công việc đã lưu</a></li>
                         <li>
                             <hr class="dropdown-divider">
@@ -48,8 +48,8 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li class="dropdown-item">Mã TK: <?php echo $_COOKIE['id_user'] ?></li>
                         <li><a class="dropdown-item" href="../html/view_my_info.php">Thông tin cá nhân</a></li>
-                        <li><a class="dropdown-item" href="#">Quản lý CV</a></li>
-                        <li><a class="dropdown-item" href="#">Xem công việc đã lưu</a></li>
+                        <li><a class="dropdown-item" href="../html/post_recruit.php">Bài Đăng</a></li>
+                        <!-- <li><a class="dropdown-item" href="#">Xem công việc đã lưu</a></li> -->
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -85,10 +85,10 @@
     </div>
     <div class="cv_check container ">
         <?php
-        if ($_COOKIE['role'] == 0) {
+        if (isset($_COOKIE['role']) && $_COOKIE['role'] == 0) {
             require_once("../html/modules/connection.php");
 
-            $id_user = $_COOKIE['id_user'];
+            $id_user = isset($_COOKIE['id_user']) ? $_COOKIE['id_user'] : '';
             $query = "SELECT * FROM cv WHERE id_user = '$id_user' ";
             $result = mysqli_query($conn, $query);
 

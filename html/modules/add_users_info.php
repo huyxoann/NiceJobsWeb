@@ -37,7 +37,7 @@ include("../html/modules/xu_ly_du_lieu.php");
                         <div class="modal-body">
                             <h6>Bước cuối để hoàn tất việc đăng kí của bạn, vui lòng nhập những thông tin bên dưới để bắt đầu công việc của bạn!</h6>
                             <p>Nhập thông tin chính xác để nhà tuyển dụng có thể dễ dàng liên lạc với bạn!</p>
-                            <form action="xu_ly_du_lieu.php" method="post" enctype="multipart/form-data">
+                            <form action="../html/modules/xu_ly_du_lieu.php" method="post" enctype="multipart/form-data">
                                 <div class="form-control">
                                     <div class="row mt-3">
                                         <div class="col-md-6">
@@ -95,7 +95,7 @@ include("../html/modules/xu_ly_du_lieu.php");
                         <div class="modal-body">
                             <p>Nhập thông tin chính xác để chúng tôi biết bạn là ai.</p>
                             <p>Bạn có thể cập nhật lại ở mục "Thay đổi thông tin người dùng".</p>
-                            <form action="xu_ly_du_lieu.php" method="post" enctype="multipart/form-data">
+                            <form action="../html/modules/xu_ly_du_lieu.php" method="post" enctype="multipart/form-data">
                                 <h2 class="">Thông tin của bạn</h2>
                                 <div class="form-control ">
                                     <div class="row mt-3">
@@ -125,7 +125,7 @@ include("../html/modules/xu_ly_du_lieu.php");
                                         <div class="col-md-6">
                                             <div class="input-group mb-3">
                                                 <label class="input-group-text" for="inputGroupFile01">Ảnh đại diện</label>
-                                                <input name="img" type="file" class="form-control" id="inputGroupFile01">
+                                                <input name="image" type="file" class="form-control" id="inputGroupFile01">
                                             </div>
                                         </div>
 

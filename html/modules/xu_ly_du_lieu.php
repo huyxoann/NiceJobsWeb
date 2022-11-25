@@ -11,7 +11,7 @@ if (isset($_POST['saveInfo']) && $_POST['saveInfo']) {
     if (isset($_COOKIE['role']) && $_COOKIE['role'] == 0) {
         $employee_query = "INSERT INTO employee (fullname, gender, phone_number, image, id_user) VALUES('$full_name', '$gender', '$phone_number', '$image', '$id_user')";
         if ($conn->query($employee_query)) {
-            move_uploaded_file($image_temp, '../images/users/' . $image);
+            move_uploaded_file($image_temp, '../picture/users/' . $image);
             header("Location: trangchu.php");
         } else {
             $notification = "Thêm thông tin không thành công, vui lòng kiểm tra lại!";
@@ -33,11 +33,11 @@ if (isset($_POST['saveInfo']) && $_POST['saveInfo']) {
         $corp_query = "INSERT INTO corporation (id_corp, corp_name, description, image, website, address, corp_field_id) VALUES('$id_corp', '$corp_name', '$moTa', '$corp_img', '$website', '$corp_address', '$corp_field') ";
         if ($conn->query($corp_query)) {
             move_uploaded_file($image_tmp, '../images/corps/' . $corp_img);
-            header("Location: ../html/trangchu.php");
+            header("Location: ../trangchu.php");
         }
         $employer_query = "INSERT INTO employer (fullname, gender, phone_number, image, id_user, id_corp) VALUES('$full_name', '$gender', '$phone_number', '$avatar_img', '$id_user', '$id_corp')";
         if ($conn->query($employer_query)) {
-            header("Location: ../html/trangchu.php");
+            header("Location: ../trangchu.php");
         }
     } else {
     }

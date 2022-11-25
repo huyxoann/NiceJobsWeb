@@ -10,7 +10,7 @@ require '../html/modules/PHPMailer/src/SMTP.php';
 
 require('../html/modules/connection.php');
 if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
-    header("location: trangchu.php");
+    header("location: ../html/post_recruit.php");
 } else {
     if (isset($_POST['signUp'])) {
         $role = 1;

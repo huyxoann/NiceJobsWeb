@@ -3,8 +3,8 @@ require 'includes/header.php';
 require '../functions/myfunctions.php';
 require '../config/connectdb.php';
 
-  $query = mysqli_query($conn,"SELECT * FROM `corporation`");
-  $count = mysqli_num_rows($query);
+$query = mysqli_query($conn, "SELECT * FROM `corporation`");
+$count = mysqli_num_rows($query);
 
 ?>
 <div class="card-header">

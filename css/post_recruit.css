@@ -1,0 +1,15 @@
+.jobs_item {
+    display: flex;
+
+}
+
+.jobs_item_element {
+    flex-direction: row;
+    display: flex;
+}
+
+.title_text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

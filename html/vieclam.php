@@ -102,7 +102,6 @@ require('../html/modules/connection.php');
                 </div>
                 <div class="info-company">
                     <h5 class="name-job">
-
                         Chuyên Viên Tư Vấn Tài Chính Doanh Nghiệp</h5>
                     <p class="name-company">
                         Công ty cổ phần chứng khoán FPT</p>

@@ -2,7 +2,7 @@
 require('./modules/connection.php');
 
 
-$date = $_COOKIE['date'];
+$date = isset($_COOKIE['date']) ? $_COOKIE['date'] : "";
 function split_date($date)
 {
     $convertToTime = strtotime($date);
@@ -23,10 +23,10 @@ if (isset($_POST['saveCV']) && $_POST['saveCV']) {
         if ($conn->query($add_cv_query)) {
             move_uploaded_file($file_pdf_temp, '../pdf/' . $file_pdf);
             $notification = "Thêm CV thành công!";
-            header('hoso_cv.php');
+            header('Location: hoso_cv.php');
         } else {
             $notification = "Đã có lỗi xảy ra! Vui lòng thử lại sau!";
-            header('hoso_cv.php');
+            header('Location: hoso_cv.php');
         }
     }
 }
@@ -56,8 +56,8 @@ if (isset($_POST['saveCV']) && $_POST['saveCV']) {
                 <div class="col-md-3">
                     <div class="avatar_img text-center">
                         <?php
-                        $username = $_COOKIE['id_user'];
-                        $query1 = "SELECT * FROM employee WHERE id_user = '$username'";
+                        $id_user = isset($_COOKIE['id_user']) ? $_COOKIE['id_user'] : '';
+                        $query1 = "SELECT * FROM employee WHERE id_user = '$id_user'";
                         $result1 = mysqli_query($conn, $query1);
                         while ($data = mysqli_fetch_assoc($result1)) {
                         ?>
@@ -65,8 +65,10 @@ if (isset($_POST['saveCV']) && $_POST['saveCV']) {
                         <?php } ?>
                     </div>
                     <div class="name">
-                        <p class="text-center"><?php echo $_COOKIE['username'] ?></p>
-                        <p class="text-center"><?php echo split_date($_COOKIE['date']) ?></p>
+                        <p class="text-center"><?php if (isset($_COOKIE['username'])) {
+                                                    echo ($_COOKIE['username']);
+                                                }  ?></p>
+                        <p class="text-center"><?php echo split_date($date) ?></p>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -78,11 +80,13 @@ if (isset($_POST['saveCV']) && $_POST['saveCV']) {
                             </div>
                             <div class="col"></div>
                             <div class="col">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Tạo mới +</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Thêm +</button>
                             </div>
                         </div>
                         <div class=" row">
-
+                            <div class="col-md-12">
+                                <?php include('get_cv.php') ?>
+                            </div>
                         </div>
                     </div>
 
@@ -130,7 +134,7 @@ if (isset($_POST['saveCV']) && $_POST['saveCV']) {
                                         <select name="career" class="form-control select ms-5" required>
                                             <option value="0">Chọn ngành nghề</option>
                                             <?php
-                                            require_once('../html/modules/import_career.php');
+                                            require('../html/modules/import_career.php');
                                             ?>
                                         </select>
                                     </td>
@@ -143,7 +147,7 @@ if (isset($_POST['saveCV']) && $_POST['saveCV']) {
                                         <select name="exp" class="form-control select ms-5" required>
                                             <option value="0">Chọn kinh nghiệm</option>
                                             <?php
-                                            require_once('../html/modules/import_exp.php');
+                                            require('../html/modules/import_exp.php');
                                             ?>
                                         </select>
                                     </td>
@@ -163,7 +167,6 @@ if (isset($_POST['saveCV']) && $_POST['saveCV']) {
     <?php
     include('./modules/notification.php');
     require("../includes/footer.php");
-
     ?>
 </body>
 
