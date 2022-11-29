@@ -10,7 +10,6 @@ if (isset($_POST['saveInfo'])) {
     $image = $_FILES['image_user']['name'];
     $image_temp = $_FILES['image_user']['tmp_name'];
     if ($fullname == "" || $gender == "" || $phone_number == "") {
-        echo "3";
         header("Location: ../view_my_info.php");
         $mess = "Sửa thông tin không thành công, vui lòng kiểm tra lại!";
         show($mess);

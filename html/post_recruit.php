@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,23 +40,42 @@
                 for ($i = 1; $i <= mysqli_num_rows($result); $i++) {
                     $rows = mysqli_fetch_assoc($result);
             ?>
-                    <div class="jobs_item border p-3">
-                        <span class="jobs_item_element logo-company p-2">
-                            <h5 class="name-job"><?php echo $i ?></h5>
-                        </span>
-                        <span class="jobs_item_element info-company">
-                            <div class="">
-                                <a href="<?php echo '../html/job_detail.php?job_id=' . $rows['job_id'] ?>">
-                                    <h5 class="name-job"><?php echo $rows['job_name'] ?></h5>
-                                </a>
-                                <a href="">
-                                    <p class="name-company"><?php echo $rows['corp_name'] ?></p>
-                                </a>
-                                <span class="border border-primary p-2 rounded rounded-2"><?php echo $rows['salary_name'] ?></span>
-                                <span class="border border-primary p-2 rounded rounded-2"><?php echo $rows['province_name'] ?></span>
+                    <form action="" method="post">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="jobs_item border p-3 d-flex form-control">
+                                <div class="jobs_item_element logo-company p-2">
+                                    <h5 class="name-job"><?php echo $i ?></h5>
+                                </div>
+                                <div class="d-flex justify-self-between">
+                                    <div class="jobs_item_element info-company">
+                                        <div class="">
+                                            <a href="<?php echo '../html/job_detail.php?job_id=' . $rows['job_id'] ?>">
+                                                <h5 class="name-job"><?php echo $rows['job_name'] ?></h5>
+                                            </a>
+                                            <a href="">
+                                                <p class="name-company"><?php echo $rows['corp_name'] ?></p>
+                                            </a>
+                                            <span class="border border-primary p-2 rounded rounded-2"><?php echo $rows['salary_name'] ?></span>
+                                            <span class="border border-primary p-2 rounded rounded-2"><?php echo $rows['province_name'] ?></span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </span>
-                    </div>
+                            <div class="d-flex ">
+                                <div class="">
+                                    <form action="../html/modules/modal_job.php" method="post"></form>
+                                    <a href="../html/view_application.php?job_id=<?php echo $rows['job_id'] ?>" type="button" class="form-control">Xem đơn tuyển</a>
+                                    <button class="form-control" data-bs-toggle="modal" data-bs-target="#viewApplication" data-job_name="<?php echo $rows['job_name'] ?>"></button>
+                                    <!-- <a class="form-control btn btn-outline-primary" type="submit" data-bs-toggle="modal" data-bs-target="#modalEditJob">
+                                    <ion-icon name="pencil-outline"></ion-icon>
+                                </a>
+                                <a class="form-control btn btn-outline-danger" type="button">
+                                    <ion-icon name="trash-outline"></ion-icon>
+                                </a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
             <?php }
             }
             ?>
@@ -190,6 +212,7 @@
                                             </select>
                                         </td>
                                     </tr>
+
                                 </table>
                             </div>
 
@@ -204,6 +227,51 @@
             </div>
         </div>
     </div>
+    <!-- Modal view application -->
+    <!-- <div class="modal fade" id="viewApplication" tabindex="-1" aria-labelledby="viewApplicationLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewApplicationLabel">Công việc</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="">
+                            <h3>Danh sách người xin việc:</h3>
+                            
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#viewApplication').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var job_name = button.data('job_name') // Extract info from data-* attributes
+                // We are jquery here to update the modal's content
+                var modal = $(this)
+                modal.find('.modal-title').text('Đơn xin việc ' + job_name)
+                modal.find('.modal-body input').val(job_name)
+            })
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script> -->
+
 </body>
 
 </html>

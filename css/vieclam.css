@@ -50,7 +50,7 @@
     margin: 20px 0 20px 0;
 }
 
-.list-cong-viec .row {
+.list-cong-viec {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -67,7 +67,7 @@
     flex: 1;
 }
 
-.cardr:hover {
+.jobs_item:hover {
     background-color: #9fbaff;
     transition: all 0.3s;
 }
@@ -80,4 +80,16 @@
 .info-company {
     display: flex;
     flex-direction: column;
+}
+
+.name-job {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.name-company {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

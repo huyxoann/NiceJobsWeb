@@ -32,7 +32,7 @@ if (isset($_POST['saveInfo']) && $_POST['saveInfo']) {
         }
         $corp_query = "INSERT INTO corporation (id_corp, corp_name, description, image, website, address, corp_field_id) VALUES('$id_corp', '$corp_name', '$moTa', '$corp_img', '$website', '$corp_address', '$corp_field') ";
         if ($conn->query($corp_query)) {
-            move_uploaded_file($image_tmp, '../images/corps/' . $corp_img);
+            move_uploaded_file($image_tmp, '../picture/corps/' . $corp_img);
             header("Location: ../trangchu.php");
         }
         $employer_query = "INSERT INTO employer (fullname, gender, phone_number, image, id_user, id_corp) VALUES('$full_name', '$gender', '$phone_number', '$avatar_img', '$id_user', '$id_corp')";

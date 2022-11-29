@@ -17,7 +17,7 @@
                     <a href="../html/cong_ty.php" class="nav-link ">Công ty</a>
                 </li>
                 <li class="nav-item ">
-                    <a href="../html/hoso_cv.php" class="nav-link ">Hồ Sơ CV</a>
+                    <a href="https://www.topcv.vn/mau-cv?tab=2.0" class="nav-link">Hồ Sơ CV</a>
                 </li>
 
             </ul>

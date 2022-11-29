@@ -27,105 +27,96 @@ if (isset($_GET['id_corp'])) {
     <script src="../css/jquery-3.6.0.min.js"></script>
 </head>
 <?php include('../includes/header.php') ?>
-<div id="main">
+<div id="main" class="container-fluid">
+    <div class="row mt-5 d-flex flex-column border rounded p-2">
+        <div class="text-center  mt-2 mb-2 ">
+            <h2 class=""> <?= $corp_item['corp_name'] ?></h2>
 
-    <div class="container">
-        <div class="cover-wrapper">
-            <img src="../html/picture/corps/<?= $corp_item['image'] ?>" class="img-responsive cover-img">
         </div>
-        <div class="company-detail-overview">
-            <!-- <div id="company-logo">
-                        <div class="company-image-logo">
-                            <img src="../images/corps/<?= $corp_item['image'] ?>" class="img-responsive">
-                        </div>
-                    </div> -->
-            <div class="company-info">
-                <h1 class="company-detail-name text-highlight"><?= $corp_item['corp_name'] ?></h1>
-                <div class="d-flex">
-                    <p class="website">
-                        <i class="fa-light fa-earth-americas"></i>
-                        <a href="<?= $corp_item['website'] ?>" target="_blank"><?= $corp_item['website'] ?></a>
-                    </p>
+        <div class="info_corp text-center mt-2">
+            <div class="row">
+                <div class="image_corp" style="min-height: 100px; min-width: 100px;">
+                    <div class="image">
+                        <img style="max-width: 400px;" src="../html/picture/corps/<?= $corp_item['image'] ?>" alt="corps_img">
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="mo_ta border rounded p-2">
+                        <h4 class="ps-3 text-start" style="border-left: 3px solid;">Giới thiệu:</h4>
+                        <p style="text-align: justify;"><?= $corp_item['description'] ?></p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="website border rounded p-2">
+                        <h4 class="ps-3 text-start" style="border-left: 3px solid;">Website</h4>
+                        <a href="<?php echo $rows['website'] ?>">
+                            <p class="text-start"><?= $corp_item['website'] ?></p>
+                        </a>
+                    </div>
+                    <div class="address border rounded p-2">
+                        <h4 class="ps-3 text-start" style="border-left: 3px solid;">Address</h4>
+                        <p class="text-start"><?= $corp_item['address'] ?></p>
+                    </div>
+
                 </div>
             </div>
-            <div class="box-follow">
-                <a href="javascript:showLoginPopup(null, null);" class="btn btn-follow btn-primary-hover">Theo dõi công ty</a>
-            </div>
         </div>
-    </div>
-
-    <div class="detail">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="company-info box-white">
-                        <h4 class="title">Corporation Description </h4>
-                        <div class="box-body">
-                            <?= $corp_item['description'] ?>
-                        </div>
+        <div class="info_jobs  mt-2 ">
+            <div class="col-md-9">
+                <div class="job-listing box-white mt-4 mb-4 " style="border: 1px solid black;">
+                    <div class="job-listing mo_ta border rounded p-2 ">
+                        <h4 class="ps-3 text-start" style="border-left: 3px solid;">Tuyển dụng</h4>
                     </div>
-                    <div class="job-listing box-white">
-                        <h4 class="title">Tuyển dụng</h4>
-                        <div class="box-body">
-                            <div class="job-item  job-ta result-job-hover" data-job-id="468305" data-job-position="1" data-box="BoxRecruitmentInCompany">
-                                <div class="avatar">
-                                    <a target="_blank" href="../images/corps/<?= $corp_item['image'] ?>" class="company-logo">
-                                        <img src="../images/corps/<?= $corp_item['image'] ?>" class="w-100" alt="" title="Database Administrator - Hà Nội Ta141">
+                    <?php
+                    $query1 = "SELECT *, DATEDIFF(deadline, CURRENT_DATE()) AS dead  FROM  (((((((jobs INNER JOIN corporation ON jobs.corp_id = corporation.id_corp) INNER JOIN career ON career.career_id = jobs.career_id) INNER JOIN experience ON experience.exp_id = jobs.exp_id) INNER JOIN province ON province.province_id = jobs.job_id) INNER JOIN level ON level.level_id = jobs.level_id) INNER JOIN way_to_work ON way_to_work.way_to_work_id = jobs.way_to_work_id) INNER JOIN salary ON salary.salary_id = jobs.salary_id)  WHERE corp_id='$id_corp'";
+                    $query_run1 = mysqli_query($conn, $query1);
+                    if (mysqli_num_rows($query_run1) > 0) {
+                        // $GLOBALS['job_item'] = mysqli_fetch_assoc($query_run1);
+                        foreach ($query_run1 as $job_item) {
+                    ?>
+                            <div class="d-flex job-item  bg-highlight  result-job-hover alert-success mt-4 mb-4 " data-job-id="" data-job-position="2" data-box="BoxRecruitmentInCompany" style="border: 1px solid green;">
+                                <div class="flex-shrink-0 avatar align-middle">
+                                    <a target="" href="#" class="company-logo">
+                                        <img src="../html/picture/corps/<?= $corp_item['image'] ?>" title="<?= $job_item['job_name'] ?>" class="img-responsive cover-img ">
                                     </a>
                                 </div>
-                                <div class="body">
+                                <div class="body flex-grow-1 ms-3">
                                     <div class="content">
                                         <div class="ml-auto">
-                                            <h3 class="title">
-                                                <a target="_blank" class="underline-box-job" href="../images/corps/<?= $corp_item['image'] ?>">
-                                                    <span class="bold transform-job-title" data-toggle="tooltip" title="" data-placement="top" data-container="body" data-original-title="Database Administrator - Hà Nội Ta141">Database Administrator - Hà Nội Ta141</span>
-                                                    <span class="icon-verified-employer level-five">
-                                                        <i class="fa-solid fa-circle-check" data-toggle="tooltip" data-html="true" title="" data-placement="top" data-original-title="
-  <b>Nhà tuyển dụng</b><span> đã được xác thực:</span><br>
-  <span><i class='fa-solid fa-circle-check color-green'></i> Đã xác thực email tên miền công ty</span><br>
-  <span><i class='fa-solid fa-circle-check color-green'></i> Đã xác thực số điện thoại</span><br>
-  <span><i class='fa-solid fa-circle-check color-green'></i> Đã được duyệt Giấy phép kinh doanh</span><br>
-  <span><i class='fa-solid fa-circle-check color-green'></i> Tài khoản NTD được tạo tối thiểu 6 tháng</span><br>
-  <span><i class='fa-solid fa-circle-check color-green'></i> Chưa có lịch sử bị báo cáo tin đăng</span><br>"></i></span>
+                                            <h2 class="title">
+                                                <a target="_blank" class="underline-box-job" href="../html/job_detail.php?job_id=<?= $job_item['job_id'] ?>">
+                                                    <span class="bold transform-job-title text-dark d-inline-block" data-toggle="tooltip" title="" data-placement="top" data-container="body" data-original-title="<?= $job_item['job_name'] ?>"><?= $job_item['job_name'] ?></span>
                                                 </a>
-                                            </h3>
-                                            <p class="company underline-box-job">
-                                                <a href="#" data-toggle="tooltip" title="" data-placement="top" data-container="body" target="_blank" data-original-title="Ngân Hàng TMCP Việt Nam Thịnh Vượng (VPBank)">Ngân Hàng TMCP Việt Nam Thịnh Vượng (VPBank)</a>
+                                            </h2>
+                                            <p class="company underline-box-job ">
+                                                <a class="text-secondary " href="corp_details.php?id_corp=<?= $id_corp ?>" data-toggle="tooltip" title="" data-placement="top" data-container="body" target="_blank" data-original-title="<?= $corp_item['corp_name'] ?>"><?= $corp_item['corp_name'] ?></a>
                                             </p>
                                         </div>
-                                        <div class="mr-auto text-right">
-                                            <p class="deadline">
-                                                Còn <strong>68</strong> ngày để ứng tuyển
-                                            </p>
-                                        </div>
+
                                     </div>
                                     <div class="d-flex">
                                         <div class="label-content ml-auto">
-                                            <label class="salary">Thoả thuận</label>
-                                            <label class="address" data-toggle="tooltip" data-html="true" title="" data-placement="top" data-container="body" data-original-title="<p style='text-align: left'>Hà Nội</p>">Hà Nội</label>
-                                            <label class="time">3 ngày trước</label>
+                                            <label class="address alert-dark p-1" data-toggle="tooltip" data-html="true" title="<?= $job_item['province_name'] ?>" data-placement="top" data-container="body" data-original-title="<p style='text-align: left'><?= $job_item['province_name'] ?></p>"><?= $job_item['province_name'] ?></label>
+                                            <label class="salary_name alert-dark p-1" data-toggle="tooltip" data-html="true" title="<?= $job_item['salary_name'] ?>" data-placement="top" data-container="body" data-original-title="<p style='text-align: left'><?= $job_item['salary_name'] ?></p>"><?= $job_item['salary_name'] ?></label>
                                         </div>
-                                        <div class="icon mr-auto">
-                                            <a href="javascript:showLoginPopup(null, 'Đăng nhập hoặc Đăng ký để lưu tin tuyển dụng')" class="save" data-toggle="tooltip" title="" data-original-title="Bạn phải đăng nhập để lưu tin"><i class="fa-light fa-heart"></i></a>
-                                        </div>
+                                        <!-- <div class="icon mr-auto">
+                                        <a href="javascript:showLoginPopup(null, 'Đăng nhập hoặc Đăng ký để lưu tin tuyển dụng')" class="save" data-toggle="tooltip" title="" data-original-title="Bạn phải đăng nhập để lưu tin"><i class="fa-light fa-heart"></i></a>
+                                    </div>  -->
                                     </div>
                                 </div>
+                                <div class="mr-auto text-right">
+                                    <p class="deadline ">
+                                        Còn <strong><?= $job_item['dead'] ?></strong> ngày để ứng tuyển
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="about-us-content ">
-                <div class="title-about-us ">
-                    Về Chúng tôi - NICE JOB
-                </div>
-                <div class="description-about-us ">
-                    Chào mừng đã đến với NiceJob - Nền tảng tuyển dụng số hàng đầu Việt Nam. Website cung cấp một nền tảng tuyển dụng số mới nhất hiện nay. Cung cấp cho người dùng khả năng tìm kiếm công việc nhanh chóng, đầy đủ mọi ngành nghề, thiết kế CV, giao diện đẹp,
-                    dễ sử dụng. Tìm hiểm thêm về chúng tôi ở đường dẫn bên dưới.
-                </div>
-                <div class="button-about-us ">
-                    <button type="button" class="btn btn-primary me-2 "><a href="../html/thongtinweb.php" style="color: #f9f9f9;">Tìm hiểu thêm...</a></button>
+                    <?php
+                        }
+                    } ?>
                 </div>
             </div>
         </div>
-        <?php include('../includes/footer.php') ?>
+
+    </div>
+</div>
+<?php include('../includes/footer.php') ?>

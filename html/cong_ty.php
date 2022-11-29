@@ -23,7 +23,6 @@ require('../html/modules/connection.php');
                 <h1 style="text-align: center;height: 50px; margin-top: 5px;">
                     DANH SÁCH CÔNG TY
                 </h1>
-
             </div>
             <div class="row">
                 <?php
@@ -34,7 +33,7 @@ require('../html/modules/connection.php');
                 ?>
                         <div class="col-md-4 col-sm-6 ">
                             <div class="box-company item-hover">
-                                <div class="company-banner">
+                                <div class="company-banner text-center">
                                     <a href="corp_details.php?id_corp=<?= $item['id_corp'] ?>">
                                         <div class="cover-wraper">
                                             <img src="../html/picture/corps/<?= $item['image'] ?>" class="img-fluid">
@@ -42,11 +41,11 @@ require('../html/modules/connection.php');
                                     </a>
                                 </div>
                                 <div class="company-info">
-                                    <h3>
+                                    <h3 class="text-truncate">
                                         <a href="corp_details.php?id_corp=<?= $item['id_corp'] ?>" class="company-name"><?= $item['corp_name'] ?></a>
                                     </h3>
                                     <div class="company-description">
-                                        <p><?= $item['description'] ?></p>
+                                        <p class="" style="text-align: justify;display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;"><?= $item['description'] ?></p>
                                     </div>
                                 </div>
                             </div>

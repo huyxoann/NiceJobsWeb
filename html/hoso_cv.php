@@ -8,25 +8,31 @@ function split_date($date)
     $convertToTime = strtotime($date);
     return date('d-m-Y', $convertToTime);
 }
-if (isset($_POST['saveCV']) && $_POST['saveCV']) {
+if (isset($_POST['saveCV'])) {
     $id_user = $_COOKIE['id_user'];
     $cv_name = mysqli_real_escape_string($conn, $_POST['cv_name']);
     $file_pdf = $_FILES['pdf']['name'];
     $file_pdf_temp = $_FILES['pdf']['tmp_name'];
     $career = mysqli_real_escape_string($conn, $_POST['career']);
     $exp = mysqli_real_escape_string($conn, $_POST['exp']);
+
+    $destination_path = getcwd() . DIRECTORY_SEPARATOR;
+    $target_path = $destination_path . '../html/pdf/' . basename($_FILES["pdf"]["name"]);
+
+
     if ($career == 0 || $exp == 0) {
         $notification = "Thêm không thành công!";
         header('hoso_cv.php');
     } else {
         $add_cv_query = "INSERT INTO cv (`file_name`, cv_name, id_user, career_id, exp_id) VALUES ('$file_pdf', '$cv_name', '$id_user', '$career', '$exp')";
-        if ($conn->query($add_cv_query)) {
-            move_uploaded_file($file_pdf_temp, '../pdf/' . $file_pdf);
-            $notification = "Thêm CV thành công!";
-            header('Location: hoso_cv.php');
-        } else {
-            $notification = "Đã có lỗi xảy ra! Vui lòng thử lại sau!";
-            header('Location: hoso_cv.php');
+        if (move_uploaded_file($_FILES['pdf']['tmp_name'], $target_path)) {
+            if (mysqli_query($conn, $add_cv_query)) {
+                $notification = "Thêm CV thành công!";
+                header('Location: hoso_cv.php');
+            } else {
+                $notification = "Đã có lỗi xảy ra! Vui lòng thử lại sau!";
+                header('Location: hoso_cv.php');
+            }
         }
     }
 }
@@ -61,7 +67,7 @@ if (isset($_POST['saveCV']) && $_POST['saveCV']) {
                         $result1 = mysqli_query($conn, $query1);
                         while ($data = mysqli_fetch_assoc($result1)) {
                         ?>
-                            <img style="max-width: 400px;" src="../images/users/<?php echo $data['image'] ?>" alt="user_img">
+                            <img style="max-width: 400px;" src="../html/picture/users/<?php echo $data['image'] ?>" alt="user_img">
                         <?php } ?>
                     </div>
                     <div class="name">
