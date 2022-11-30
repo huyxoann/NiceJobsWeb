@@ -12,6 +12,8 @@ if (isset($_GET['job_id'])) {
 } else {
     header("Location: ../html/page_404.php");
 }
+
+
 function date_formatting($date)
 {
     $time = strtotime($date);
@@ -69,11 +71,31 @@ function date_formatting($date)
                         <ion-icon name="mail" class="me-3"></ion-icon>Ứng tuyển ngay
                     </button>
                 </div>
-                <div class="mt-3">
-                    <button class="btn btn-outline-secondary" style="min-width: 147.08px;">
-                        <ion-icon name="heart" class="me-3"></ion-icon>Lưu tin
-                    </button>
-                </div>
+                <?php
+                $query_check_save = "SELECT * FROM save WHERE employee_id = '$employee_id' AND job_id = '$job_id'";
+                if (mysqli_num_rows(mysqli_query($conn, $query_check_save)) != 0) { ?>
+                    <div class="mt-3">
+                        <form action="../html/saving_post.php" method="post">
+                            <input type="text" name="job_id" value="<?= $rows['job_id'] ?>" style="display: none;">
+                            <input type="text" name="state" value="1" style="display: none;">
+                            <button class="btn btn-secondary" style="min-width: 147.08px;" type="submit" name="add">
+                                <ion-icon name="heart" class="me-3"></ion-icon>Đã lưu
+                            </button>
+                        </form>
+                    </div>
+                <?php } else { ?>
+                    <div class="mt-3">
+                        <form action="../html/saving_post.php" method="post">
+                            <input type="text" name="job_id" value="<?= $rows['job_id'] ?>" style="display: none;">
+                            <input type="text" name="state" value="0" style="display: none;">
+                            <button class="btn btn-outline-secondary" style="min-width: 147.08px;" type="submit" name="add">
+                                <ion-icon name="heart" class="me-3"></ion-icon>Lưu tin
+                            </button>
+                        </form>
+                    </div>
+                <?php }
+                ?>
+
                 <!-- <div class="">
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyJob" disabled>
                         <ion-icon name="mail" class="me-3"></ion-icon>Ứng tuyển ngay
@@ -137,9 +159,9 @@ function date_formatting($date)
                                 <b>
                                     <ion-icon name="transgender-outline"></ion-icon>Giới tính
                                 </b>
-                                <p><?php if ($rows['gender'] == 0) {
+                                <p><?php if ($rows['gender_job'] == 0) {
                                         echo "Nam";
-                                    } elseif ($rows['gender'] == 1) {
+                                    } elseif ($rows['gender_job'] == 1) {
                                         echo "Nữ";
                                     } else {
                                         echo "Không yêu cầu";

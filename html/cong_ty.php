@@ -17,12 +17,22 @@ require('../html/modules/connection.php');
 <?php include('../includes/header.php') ?>
 
 <div class="container">
-    <div class="row">
+    <div class="">
         <div class="col-md-12">
             <div class="card-header">
                 <h1 style="text-align: center;height: 50px; margin-top: 5px;">
                     DANH SÁCH CÔNG TY
                 </h1>
+            </div>
+            <div class="row">
+                <div class="col-md-9"></div>
+                <div class="col-md-3 input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Nhập tên công ty" aria-label="search" aria-describedby="basic-addon1">
+                    <input type="submit" value="Tìm" name="search" class="btn btn-secondary">
+                </div>
             </div>
             <div class="row">
                 <?php

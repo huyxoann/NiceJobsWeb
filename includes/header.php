@@ -38,7 +38,7 @@
                         <li class="dropdown-item">Mã TK: <?php echo $_COOKIE['id_user'] ?></li>
                         <li><a class="dropdown-item" href="../html/view_my_info.php">Thông tin cá nhân</a></li>
                         <li><a class="dropdown-item" href="../html/hoso_cv.php">Quản lý CV</a></li>
-                        <li><a class="dropdown-item" href="#">Xem công việc đã lưu</a></li>
+                        <li><a class="dropdown-item" href="../html/saving_post.php">Xem công việc đã lưu</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -49,7 +49,6 @@
                         <li class="dropdown-item">Mã TK: <?php echo $_COOKIE['id_user'] ?></li>
                         <li><a class="dropdown-item" href="../html/view_my_info.php">Thông tin cá nhân</a></li>
                         <li><a class="dropdown-item" href="../html/post_recruit.php">Bài Đăng</a></li>
-                        <!-- <li><a class="dropdown-item" href="#">Xem công việc đã lưu</a></li> -->
                         <li>
                             <hr class="dropdown-divider">
                         </li>

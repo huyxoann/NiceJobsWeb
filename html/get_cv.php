@@ -26,8 +26,8 @@ if (mysqli_num_rows($result) > 0) {
                     </div>
                 </a>
                 <div class="action_button">
-                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editCV">Sửa</button>
-                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCV">Xóa</button>
+                    <!-- <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editCV" data-cv-name="<?= $rows_cv_edit['cv_name'] ?>" data-cv-filename="<?= $rows_cv_edit['file_name'] ?>" data-cv-career="<?= $rows_cv_edit['career_id'] ?>" data-cv-exp="<?= $rows_cv_edit['exp_id'] ?>" data-cv-id="<?= $rows_cv_edit['id_cv'] ?>" data-cv-pdf="<?= $rows_cv_edit['filename'] ?>">Sửa</button> -->
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCV" data-cv-name="<?= $rows_cv_edit['cv_name'] ?>" data-cv-id="<?= $rows_cv_edit['cv-id'] ?>">Xóa</button>
                 </div>
             </div>
         </div>
@@ -58,11 +58,10 @@ if (mysqli_num_rows($result) > 0) {
 </div>
 <script>
     $('#cvShow').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var cv_name = button.data('cv-name') // Extract info from data-* attributes
+        var button = $(event.relatedTarget)
+        var cv_name = button.data('cv-name')
         var cv_filename = button.data('cv-filename')
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
         var modal = $(this)
         modal.find('.modal-title').text('' + cv_name)
         modal.find('.modal-body embed').attr("src", "../html/pdf/" + cv_filename)
@@ -74,25 +73,26 @@ if (mysqli_num_rows($result) > 0) {
         <div class="modal-content">
             <form action="../html/modules/modify_cv.php" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Edit CV</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p>Tên CV:</p>
-                    <input type="text" name="cv_name" class="form-control" value="<?php echo $rows_cv_edit_GL['cv_name'] ?>">
+                    <input type="text" id="cv_name" name="cv_name" class="form-control" value="">
                     <p>Chọn file:</p>
-                    <input type="file" name="file_pdf" id="file_pdf" class="form-control">
+                    <input type="file" name="file_pdf" id="file_pdf" class="form-control" accept=".pdf">
                     <p>Chọn ngành nghề:</p>
                     <select name="career" id="career" class="form-control">
-                        <option value="<?= $rows_cv_edit_GL['career_id'] ?>" selected><?php echo $rows_cv_edit_GL['career_name'] ?></option>
+                        <option value="" selected></option>
                         <?php include('../html/modules/import_career.php') ?>
                     </select>
                     <p>Chọn kinh nghiệm:</p>
                     <select name="exp" id="exp" class="form-control">
-                        <option value="<?= $rows_cv_edit_GL['exp_id'] ?>" selected><?php echo $rows_cv_edit_GL['exp_name'] ?></option>
+                        <option value="" selected></option>
                         <?php include('../html/modules/import_exp.php') ?>
                     </select>
-                    <input type="text" name="id_cv" value="<?php echo $rows_cv_edit_GL['id_cv'] ?>" style="display: none;">
+                    <input type="text" id="id_cv" name="id_cv" value="" style="display: none;">
+                    <input type="text" id="filename" name="filename" value="" style="display: none;">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
@@ -102,21 +102,53 @@ if (mysqli_num_rows($result) > 0) {
         </div>
     </div>
 </div>
+<script>
+    $('#editCV').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var cv_name = button.data('cv-name')
+        var cv_filename = button.data('cv-filename')
+        var cv_career = button.data('cv-career')
+        var cv_exp = button.data('cv-exp')
+        var cv_id = button.data('cv-id')
+        var cv_filename = button.data('cv-pdf')
+
+        var modal = $(this)
+        modal.find('.modal-body #cv_name').val(cv_name)
+        modal.find('.modal-body #career').val(cv_career)
+        modal.find('.modal-body #exp').val(cv_exp)
+        modal.find('.modal-body #id_cv').val(cv_exp)
+        modal.find('.modal-body #filename').val(cv_filename)
+    })
+</script>
 <!-- DELETE CV -->
-<div class="modal fade" id="deleteCV" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteCV" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Thông báo</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <form action="../html/modules/modify_cv.php" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="deleteLabel">Thông báo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger" id="remind">Bạn có chắc chắn muốn xóa </p>
+                    <input type="text" id="cv_id" name="cv_id" value="" style="display: none;">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-danger">Xóa</button>
+                </div>
             </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-danger">Xóa</button>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
+<script>
+    $('#deleteCV').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget)
+        var remind = button.data('cv-name')
+        var cv_id = button.data('cv-id')
+
+        var modal = $(this)
+        modal.find('.modal-body #remind').text('Bạn có chắc chắn muốn xóa "' + remind + '" không?')
+        modal.find('.modal-body #cv_id').val(cv_id)
+    })
+</script>

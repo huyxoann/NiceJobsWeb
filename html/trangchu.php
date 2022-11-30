@@ -26,62 +26,56 @@ require('../html/modules/add_users_info.php');
             <img src="../Images/jobicon.png" alt="job_icon">
             <h3>Tìm kiếm công việc của bạn</h3>
         </div>
-        <div class="search-form">
-            <div class="form-jobs-content">
-                <a href="#collapseMenuChoose" data-bs-toggle="collapse" aria-controls="collapseMenuChoose" role="button"><input type="email" class="form-control" id="jobsName" placeholder="Nhập công việc, vị trí bạn muốn ứng tuyển..."></a>
-            </div>
-            <div class="button-form">
-                <button type="button " class="btn btn-primary me-2 ">Tìm việc ngay</button>
-            </div>
-        </div>
-        <div class="collapse-select">
-            <div class="collapse" id="collapseMenuChoose">
-                <div class="select">
-                    <div class="form-group">
-                        <select name="career" class="form-control select">
-                            <option value="0">Tất cả ngành nghề</option>
-                            <?php
-                            require_once('../html/modules/import_career.php');
-                            ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select name="corp_field" class="form-control select">
-                            <option value="0">Tất cả lĩnh vực công ty</option>
-                            <?php require_once('../html/modules/import_field.php') ?>
-                        </select>
-                    </div>
+        <form action="../html/vieclam.php" method="get">
+            <div class="search-form">
+                <div class="form-jobs-content">
+                    <a href="#collapseMenuChoose" data-bs-toggle="collapse" aria-controls="collapseMenuChoose" role="button"><input name="search_bar" type="text" class="form-control" id="jobsName" placeholder="Nhập công việc, vị trí bạn muốn ứng tuyển..."></a>
                 </div>
-                <div class="select">
-                    <div class="form-group">
-                        <select name="province" class="form-control select">
-                            <option value="0">Tất cả địa điểm</option>
-                            <?php require_once('../html/modules/import_province.php') ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select name="level" class="form-control select">
-                            <option value="0">Tất cả cấp bậc</option>
-                            <?php require_once('../html/modules/import_level.php') ?>
-                        </select>
-                    </div>
+                <div class="button-form">
+                    <button type="submit" name="search" class="btn btn-primary me-2 ">Tìm việc ngay</button>
                 </div>
-                <div class="select">
-                    <div class="form-group">
-                        <select name="wtw" class="form-control select">
-                            <option value="0">Tất cả hình thức làm việc</option>
-                            <?php require_once('../html/modules/import_way_to_work.php') ?>
-                        </select>
+            </div>
+            <div class="collapse-select">
+                <div class="collapse" id="collapseMenuChoose">
+                    <div class="select">
+                        <div class="form-group">
+                            <select name="career" class="form-control select">
+                                <option value="0">Tất cả ngành nghề</option>
+                                <?php require_once('../html/modules/import_career.php'); ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="salary" class="form-control select">
+                                <option value="0">Tất cả mức lương</option>
+                                <?php require_once('../html/modules/import_salary.php') ?>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <select name="salary" class="form-control select">
-                            <option value="0">Tất cả mức lương</option>
-                            <?php require_once('../html/modules/import_salary.php') ?>
-                        </select>
+                    <div class="select">
+                        <div class="form-group">
+                            <select name="province" class="form-control select">
+                                <option value="0">Tất cả địa điểm</option>
+                                <?php require_once('../html/modules/import_province.php') ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select name="level" class="form-control select">
+                                <option value="0">Tất cả cấp bậc</option>
+                                <?php require_once('../html/modules/import_level.php') ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="select">
+                        <div class="form-group">
+                            <select name="way_to_work" class="form-control select">
+                                <option value="0">Tất cả hình thức làm việc</option>
+                                <?php require_once('../html/modules/import_way_to_work.php') ?>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <div class="introduce-company">
             <div class="title-introduce">
                 <h4>Cách công ti tuyển dụng hàng đầu trên NICE JOB</h4>

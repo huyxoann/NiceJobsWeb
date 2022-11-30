@@ -104,6 +104,7 @@ if (isset($_POST['saveCV'])) {
             </div>
         </div>
     </div>
+    <!-- Add New Job Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -129,7 +130,7 @@ if (isset($_POST['saveCV'])) {
                                         <p>File PDF: </p>
                                     </td>
                                     <td>
-                                        <input type="file" name="pdf" id="pdf" class="form-control ms-5" required>
+                                        <input type="file" name="pdf" id="pdf" class="form-control ms-5" required accept=".pdf">
                                     </td>
                                 </tr>
                                 <tr>
