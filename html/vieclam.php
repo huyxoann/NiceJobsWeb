@@ -72,15 +72,11 @@ require('../html/modules/connection.php');
 
 
 <div class="tin-tuyen-dung container">
-    <div class="title-ttd">
-        <h3>Tin tuyển dụng mới nhất</h3>
-    </div>
-    <div class="list-cong-viec d-flex flex-wrap">
 
+    <div class="list-cong-viec d-flex flex-wrap flex-column">
         <?php
         include('../html/modules/search_job_show.php');
         ?>
-
     </div>
 </div>
 <?php include('../includes/footer.php') ?>

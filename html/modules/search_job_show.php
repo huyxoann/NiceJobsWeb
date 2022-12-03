@@ -8,7 +8,7 @@ if (isset($_GET['search'])) {
     $province = $_GET['province'];
     $salary = $_GET['salary'];
 
-    $query_search = "SELECT * FROM (((((((jobs INNER JOIN corporation ON jobs.corp_id = corporation.id_corp) INNER JOIN career ON career.career_id = jobs.career_id) INNER JOIN experience ON experience.exp_id = jobs.exp_id) INNER JOIN province ON province.province_id = jobs.job_id) INNER JOIN level ON level.level_id = jobs.level_id) INNER JOIN way_to_work ON way_to_work.way_to_work_id = jobs.way_to_work_id) INNER JOIN salary ON salary.salary_id = jobs.salary_id) WHERE job_name LIKE '%$search_name%'";
+    $query_search = "SELECT * FROM (((((((jobs INNER JOIN corporation ON jobs.corp_id = corporation.id_corp) INNER JOIN career ON career.career_id = jobs.career_id) INNER JOIN experience ON experience.exp_id = jobs.exp_id) INNER JOIN province ON province.province_id = jobs.job_id) INNER JOIN level ON level.level_id = jobs.level_id) INNER JOIN way_to_work ON way_to_work.way_to_work_id = jobs.way_to_work_id) INNER JOIN salary ON salary.salary_id = jobs.salary_id) WHERE job_name LIKE '%$search_name%' AND DATEDIFF(deadline, CURRENT_DATE())>0 ORDER BY created_at DESC";
     if ($career != 0) {
         $query_search = $query_search . " AND jobs.career_id = '$career'";
     }
@@ -24,8 +24,11 @@ if (isset($_GET['search'])) {
     if ($salary != 0) {
         $query_search = $query_search . " AND jobs.salary_id = '$salary'";
     }
-    $result_query_search = $conn->query($query_search);
-    if (mysqli_num_rows($result_query_search) > 0) {
+    $result_query_search = $conn->query($query_search); ?>
+    <div class="title-ttd row">
+        <h3>Kết quả tìm kiếm: </h3>
+    </div>
+    <?php if (mysqli_num_rows($result_query_search) > 0) {
         while ($data_jobs = mysqli_fetch_assoc($result_query_search)) { ?>
             <div class="row">
                 <div class="jobs_item col-md">
@@ -55,10 +58,13 @@ if (isset($_GET['search'])) {
     <?php }
     }
 } else { ?>
+    <div class="title-ttd">
+        <h3>Tin tuyển dụng mới nhất</h3>
+    </div>
     <div class="list-cong-viec d-flex flex-wrap">
         <div class="row">
             <?php
-            $query_import_job = "SELECT * FROM (((((((jobs INNER JOIN corporation ON jobs.corp_id = corporation.id_corp) INNER JOIN career ON career.career_id = jobs.career_id) INNER JOIN experience ON experience.exp_id = jobs.exp_id) INNER JOIN province ON province.province_id = jobs.job_id) INNER JOIN level ON level.level_id = jobs.level_id) INNER JOIN way_to_work ON way_to_work.way_to_work_id = jobs.way_to_work_id) INNER JOIN salary ON salary.salary_id = jobs.salary_id) WHERE DATEDIFF(deadline, CURRENT_DATE())>0 ORDER BY created_at DESC";
+            $query_import_job = "SELECT * FROM (((((((jobs INNER JOIN corporation ON jobs.corp_id = corporation.id_corp) INNER JOIN career ON career.career_id = jobs.career_id) INNER JOIN experience ON experience.exp_id = jobs.exp_id) INNER JOIN province ON province.province_id = jobs.province_id) INNER JOIN level ON level.level_id = jobs.level_id) INNER JOIN way_to_work ON way_to_work.way_to_work_id = jobs.way_to_work_id) INNER JOIN salary ON salary.salary_id = jobs.salary_id) WHERE DATEDIFF(deadline, CURRENT_DATE())>=0 ORDER BY created_at DESC";
             $result_query_import_job = mysqli_query($conn, $query_import_job);
             if (mysqli_num_rows($result_query_import_job) > 0) {
                 while ($rows = mysqli_fetch_assoc($result_query_import_job)) { ?>

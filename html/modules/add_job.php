@@ -19,7 +19,7 @@ if (!($_SERVER["REQUEST_METHOD"] == "POST")) {
 
         $id_user = isset($_COOKIE['id_user']) ? $_COOKIE['id_user'] : "";
         $id_corp = get_corp_by_id($id_user, $conn);
-        $query_add_job = "INSERT INTO jobs (job_name, num_of_recruit, gender, corp_id, work_address, job_description, career_id, exp_id, employer_id, province_id, level_id, way_to_work_id, salary_id, deadline) VALUES ('$job_name', '$num_of_recruit', '$gender','$id_corp','$address', '$job_detail', '$career', '$exp', '$id_user', '$province', '$level', '$way_to_work', '$salary', '$deadline')";
+        $query_add_job = "INSERT INTO jobs (job_name, num_of_recruit, gender_job, corp_id, work_address, job_description, career_id, exp_id, employer_id, province_id, level_id, way_to_work_id, salary_id, deadline) VALUES ('$job_name', '$num_of_recruit', '$gender','$id_corp','$address', '$job_detail', '$career', '$exp', '$id_user', '$province', '$level', '$way_to_work', '$salary', '$deadline')";
         if ($conn->query($query_add_job)) {
             header('Location: ../post_recruit.php');
         } else {

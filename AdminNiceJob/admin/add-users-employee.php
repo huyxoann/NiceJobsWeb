@@ -33,10 +33,10 @@ include 'includes/header.php';
                             <div class="col-md-6">
                                 <label for="">Gender</label>
                                 <select name="gender" class="form-control select">
-                                <option selected disabled >Select Gender</option>
-                                    <option value="Nam" >Nam</option>
-                                    <option value="Nữ">Nữ</option>
-                                    <option value="LGBT">LGBT</option>
+                                    <option selected disabled>Select Gender</option>
+                                    <option value="0">Nam</option>
+                                    <option value="1">Nữ</option>
+                                    
                                 </select>
                             </div>
                         

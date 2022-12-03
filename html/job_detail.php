@@ -9,6 +9,8 @@ if (isset($_GET['job_id'])) {
     if (mysqli_num_rows($result) > 0) {
         $GLOBALS['rows'] = mysqli_fetch_assoc($result);
     }
+    $set_expiration_state = "UPDATE jobs SET state = 0 WHERE DATEDIFF(deadline, CURRENT_DATE) < 0";
+    $conn->query($set_expiration_state);
 } else {
     header("Location: ../html/page_404.php");
 }
@@ -43,6 +45,14 @@ function date_formatting($date)
     <?php require('../includes/header.php') ?>
     <div class="content container">
         <div class="row"></div>
+        <?php
+        if ($rows['state'] == 0) { ?>
+            <div class="alert">
+                <p class="text-danger">Công việc này đã hết hạn tuyển.</p>
+            </div>
+        <?php }
+        ?>
+
         <div class="row jobs_item m-3 border border-start-5 pt-3 rounded">
             <div class="col-md-9 jobs_item_element">
                 <div class="col-md-2">
@@ -66,12 +76,21 @@ function date_formatting($date)
                 </div>
             </div>
             <div class="col-md-3 d-flex flex-column">
-                <div class="">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyJob">
-                        <ion-icon name="mail" class="me-3"></ion-icon>Ứng tuyển ngay
-                    </button>
-                </div>
                 <?php
+                $query_check_expire_date = "SELECT state FROM jobs WHERE job_id = '$job_id' AND state='0'";
+                if (mysqli_num_rows(mysqli_query($conn, $query_check_expire_date))) { ?>
+                    <div class="">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyJob" disabled>
+                            <ion-icon name="mail" class="me-3"></ion-icon>Ứng tuyển ngay
+                        </button>
+                    </div>
+                <?php } else { ?>
+                    <div class="">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyJob">
+                            <ion-icon name="mail" class="me-3"></ion-icon>Ứng tuyển ngay
+                        </button>
+                    </div>
+                <?php }
                 $query_check_save = "SELECT * FROM save WHERE employee_id = '$employee_id' AND job_id = '$job_id'";
                 if (mysqli_num_rows(mysqli_query($conn, $query_check_save)) != 0) { ?>
                     <div class="mt-3">
@@ -95,17 +114,6 @@ function date_formatting($date)
                     </div>
                 <?php }
                 ?>
-
-                <!-- <div class="">
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyJob" disabled>
-                        <ion-icon name="mail" class="me-3"></ion-icon>Ứng tuyển ngay
-                    </button>
-                </div>
-                <div class="mt-3">
-                    <button class="btn btn-outline-secondary" style="min-width: 147.08px;" disabled>
-                        <ion-icon name="heart" class="me-3"></ion-icon>Lưu tin
-                    </button>
-                </div> -->
 
             </div>
         </div>

@@ -1,5 +1,6 @@
 <?php
 include 'includes/header.php';
+require '../config/connectdb.php';
 ?>
 <div class="container">
     <div class="row">
@@ -34,9 +35,9 @@ include 'includes/header.php';
                                 <label for="">Gender</label>
                                 <select name="gender" class="form-control select">
                                     <option selected disabled>Select Gender</option>
-                                    <option value="Nam">Nam</option>
-                                    <option value="Nữ">Nữ</option>
-                                    <option value="LGBT">LGBT</option>
+                                    <option value="0">Nam</option>
+                                    <option value="1">Nữ</option>
+                                    
                                 </select>
                             </div>
                             <div class="col-md-6">
@@ -47,11 +48,28 @@ include 'includes/header.php';
                                 <label for="">Situation</label>
                                 <input type="text" name="situation" placeholder="Enter situation" class="form-control">
                             </div>
+                            
+                           <div class="col-md-6">
+                                        <label for=""> Corporation ID</label>
+                                        <select name="id_corp" class="form-control select" required>
+                                            <option selected disabled>Select Corporation ID</option>
+                                            <?php
+                                            $query = "SELECT * FROM `corporation` ";
+                                            $query_run = mysqli_query($conn, $query);
+                                            if (mysqli_num_rows($query_run) > 0) {
+                                            ?>
+                                                <?php
+                                                foreach ($query_run as $item) {
+                                                ?>
+                                                    <option value="<?= $item['id_corp'] ?>"><?php echo $item['id_corp'] . ' - ' . $item['corp_name'] ?></option>
+                                            <?php }
+                                            } else {
+                                                echo "No record avaliable";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
 
-                            <div class="col-md-6">
-                                <label for="">ID Corporation</label>
-                                <input type="text" name="id_corp" placeholder="Enter id corporation" class="form-control" required>
-                            </div>
                             <div class="col-md-6">
 
                                 <div class="col-md-6">

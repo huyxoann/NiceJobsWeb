@@ -102,27 +102,26 @@ require('../html/modules/add_users_info.php');
             </div>
         </div>
     </div>
+    <div class="mt-3 text-center">
+        <h3>Hãy đến với chúng tôi nếu bạn là:</h3>
+    </div>
     <div class="hoso-cv">
         <div>
             <img src="../Images/company2.jpg" alt="">
         </div>
+
         <div>
             <div class="hoso-cv-content">
-                <h3>Đăng tuyển và tìm hồ sơ</h3>
+                <h3>Nhà tuyển dụng</h3>
                 <p>Bạn là nhà tuyển dụng vào muốn tìm kiếm những nhân viên tiềm năng.</p>
-                <a href="../html/login_signup_employer.php"><button type="button" class="btn btn-primary" id="dangtuyenbtn"> Đăng tuyển & tìm hồ sơ</button></a>
+                <button type="button" class="btn btn-primary" id="dangtuyenbtn">Đăng tuyển dễ dàng</button>
             </div>
             <div class="taocv-moi">
                 <div class="hoso-cv-content" id="cv-box1">
-                    <h3> Thêm hồ sơ mới</h3>
-                    <p> Thêm hồ sơ công việc mới trên Nice Job để nhà tuyển dụng có thể hiểu bạn hơn.</p>
-                    <a href="../html/hoso_cv.php"><button type="button" class="btn btn-primary" id="dangtuyenbtn">+ Tạo Hồ Sơ Việc Làm</button></a>
+                    <h3>Người ứng tuyển</h3>
+                    <p>Bạn là nhà ứng tuyển và muốn tìm kiếm công việc phù hợp với bạn!</p>
+                    <button type="button" class="btn btn-primary" id="dangtuyenbtn">Tìm việc nhanh chóng</button>
                 </div>
-                <!-- <div class="cv-box">
-                    <h3>Dùng mẫu CV có sẵn</h3>
-                    <p>Sử dụng những mẫu CV có sẵn với hơn 50+ mẫu đẹp mắt</p>
-                    <button type="button" class="btn btn-primary" id="dangtuyenbtn"><a href="file:///D:/DoAnCoSo/HTML/mau-cv.html" style="color: #f9f9f9">Dùng ngay</a></button>
-                </div> -->
             </div>
         </div>
     </div>

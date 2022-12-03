@@ -64,7 +64,7 @@ if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
                                 $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                                 $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
                                 $mail->Username   = 'hirashihiro@gmail.com';                     //SMTP username
-                                $mail->Password   = 'gduaovijcmpjpaem';                               //SMTP password
+                                $mail->Password   = 'eecnlnutkfnqvrpj';                               //SMTP password
                                 $mail->SMTPSecure = 'tsl';            //Enable implicit TLS encryption
                                 $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
                                 $mail->charSet = "UTF-8";

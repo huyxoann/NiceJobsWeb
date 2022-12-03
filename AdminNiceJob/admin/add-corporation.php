@@ -1,5 +1,6 @@
 <?php
 include 'includes/header.php';
+require '../config/connectdb.php'
 ?>
 
 <div class="container">
@@ -25,9 +26,25 @@ include 'includes/header.php';
                                 <input type="text" name="corp_name" placeholder="Enter Corporation Name" class="form-control"required>
                             </div>
                             <div class="col-md-6">
-                                <label for="">Corporation field</label>
-                                <input type="text" name="corp_field_id" placeholder="Enter Corporation field" class="form-control"required>
+                                <label for=""> Corporation field</label>
+                                <select name="corp_field_id" class="form-control select" required>
+                                    <option selected disabled>Select Corporation Field</option>
+                                    <?php
+                                    $query = "SELECT * FROM `corp_field`";
+                                    $query_run = mysqli_query($conn, $query);
+                                    if (mysqli_num_rows($query_run) > 0) {
+                                        foreach ($query_run as $item) {
+                                    ?>
+                                        <option value="<?= $item['field_id'] ?>"><?php echo $item['field_id'].' - '.$item['field_name'] ?></option>
+                                    <?php }
+                                        }else {
+                                            echo "No record avaliable";
+                                        }  
+                                    ?>
+                                </select>
                             </div>
+
+                           
                             <div class="col-md-6">
                                 <label for="">Corporation email</label>
                                 <input type="text" name="corp_mail" placeholder="Enter Corporation email" class="form-control">

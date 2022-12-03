@@ -3,9 +3,12 @@ require 'includes/header.php';
 require '../functions/myfunctions.php';
 require '../config/connectdb.php';
 
-$query = mysqli_query($conn, "SELECT * FROM `corporation`");
-$count = mysqli_num_rows($query);
-
+  $query = mysqli_query($conn,"SELECT * FROM `corporation`");
+  $count1 = mysqli_num_rows($query);
+  $query = mysqli_query($conn,"SELECT * FROM `jobs`");
+  $count2 = mysqli_num_rows($query);
+  $query = mysqli_query($conn,"SELECT * FROM `users`");
+  $count3 = mysqli_num_rows($query);
 ?>
 <div class="card-header">
   <h1 style="text-align: center;height: 100px; margin-top: 25px;">
@@ -28,7 +31,7 @@ $count = mysqli_num_rows($query);
                 </div>
                 <div class="text-end pt-1">
                   <p class="text-sm mb-0 text-capitalize">Total Corporation</p>
-                  <h4 class="mb-0"><?php echo $count  ?></h4>
+                  <h4 class="mb-0"><?php echo $count1  ?></h4>
                 </div>
               </div>
               <hr class="dark horizontal my-0">
@@ -41,11 +44,11 @@ $count = mysqli_num_rows($query);
             <div class="card">
               <div class="card-header p-3 pt-2">
                 <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                  <i class="material-icons opacity-10">person</i>
+                  <i class="material-icons opacity-10">work</i>
                 </div>
                 <div class="text-end pt-1">
-                  <p class="text-sm mb-0 text-capitalize">Today's Users</p>
-                  <h4 class="mb-0">2,300</h4>
+                  <p class="text-sm mb-0 text-capitalize">Total Jobs</p>
+                  <h4 class="mb-0"><?php echo $count2  ?></h4>
                 </div>
               </div>
               <hr class="dark horizontal my-0">
@@ -61,8 +64,8 @@ $count = mysqli_num_rows($query);
                   <i class="material-icons opacity-10">person</i>
                 </div>
                 <div class="text-end pt-1">
-                  <p class="text-sm mb-0 text-capitalize">New Clients</p>
-                  <h4 class="mb-0">3,462</h4>
+                  <p class="text-sm mb-0 text-capitalize">Total users</p>
+                  <h4 class="mb-0"><?php echo $count3  ?></h4>
                 </div>
               </div>
               <hr class="dark horizontal my-0">

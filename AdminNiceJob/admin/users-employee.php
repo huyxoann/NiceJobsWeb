@@ -1,6 +1,6 @@
 <?php
 include 'includes/header.php';
-require_once '../functions/myfunctions.php';
+ require_once '../functions/myfunctions.php';
 include '../config/connectdb.php';
 
 ?>
@@ -8,8 +8,8 @@ include '../config/connectdb.php';
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card-header">
-                <h1 style="text-align: center;height: 50px; margin-top: 25px;">
+            <div class="card-header">           
+                  <h1 style="text-align: center;height: 50px; margin-top: 25px;"> 
                     TÀI KHOẢN NHÂN VIÊN
                 </h1>
                 <button type="button" class="btn btn-success float-end  w-15"><a href="add-users-employee.php">Add</a></button>
@@ -24,17 +24,17 @@ include '../config/connectdb.php';
                     </thead>
                     <tbody>
                         <?php
-
-                        $query = "SELECT users.id_user, `username`, `email`, `created_at`,`image` FROM `users`INNER JOIN `employee` ON users.id_user = employee.id_user WHERE `role`=0;";
-                        $query_run = mysqli_query($conn, $query);
-
+                        
+                        $query = "SELECT users.id_user, `username`, `email`, `created_at`,`avatar` FROM `users`INNER JOIN `employee` ON users.id_user = employee.id_user WHERE `role`=0;";
+                         $query_run = mysqli_query($conn, $query);
+                    
                         if (mysqli_num_rows($query_run) > 0) {
                             foreach ($query_run as $item) {
                         ?>
                                 <tr style="text-align: center;">
-                                    <td><?= $item['id_user'] ?></td>
-                                    <td><?= $item['username'] ?></td>
-                                    <td><?= $item['email'] ?></td>
+                                    <td><?= $item['id_user'] ?></td>                             
+                                    <td ><?= $item['username'] ?></td>
+                                    <td ><?= $item['email'] ?></td>   
                                     <td>
                                         <img style="width: 100px;height:100px;" src="../images/<?= $item['avatar']; ?>">
                                     </td>
