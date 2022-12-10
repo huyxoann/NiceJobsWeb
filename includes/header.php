@@ -17,7 +17,7 @@
                     <a href="../html/cong_ty.php" class="nav-link ">Công ty</a>
                 </li>
                 <li class="nav-item ">
-                    <a href="https://www.topcv.vn/mau-cv?tab=2.0" class="nav-link">Hồ Sơ CV</a>
+                    <!-- <a href="https://www.topcv.vn/mau-cv?tab=2.0" class="nav-link">Hồ Sơ CV</a> -->
                 </li>
 
             </ul>
@@ -75,7 +75,7 @@
             <li><a href="../html/thongtinweb.php">Về chúng tôi</a></li>
             <li><a href="../html/vieclam.php">Việc làm</a></li>
             <li><a href="../html/cong_ty.php">Công ty</a></li>
-            <li><a href="../html/hoso_cv.php">Hồ sơ CV</a></li>
+            <!-- <li><a href="../html/hoso_cv.php">Hồ sơ CV</a></li> -->
         </ul>
 
         <button type="button" class="btn btn-primary me-2 buttonHiden"><a href="../html/login_signup_employee.php" style="color: #f9f9f9;">Tìm việc ngay!</a></button>

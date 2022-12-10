@@ -12,7 +12,7 @@ if (isset($_POST['saveInfo']) && $_POST['saveInfo']) {
         $employee_query = "INSERT INTO employee (fullname, gender, phone_number, image, id_user) VALUES('$full_name', '$gender', '$phone_number', '$image', '$id_user')";
         if ($conn->query($employee_query)) {
             move_uploaded_file($image_temp, '../picture/users/' . $image);
-            header("Location: trangchu.php");
+            header("Location: ../trangchu.php");
         } else {
             $notification = "Thêm thông tin không thành công, vui lòng kiểm tra lại!";
         }

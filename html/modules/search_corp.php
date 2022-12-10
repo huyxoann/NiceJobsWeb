@@ -53,10 +53,10 @@ if (isset($_GET['search'])) {
         foreach ($query_run as $item) {
         ?>
             <div class="col-md-4 col-sm-6">
-                <div class="box-company item-hover">
-                    <div class="company-banner text-center">
+                <div class="box-company item-hover border rounded p-2 mt-2" style="min-height: 300px;">
+                    <div class="company-banner text-center" style="min-height: 100px;">
                         <a href="corp_details.php?id_corp=<?= $item['id_corp'] ?>">
-                            <div class="cover-wraper">
+                            <div class="cover-wrapper">
                                 <img src="../html/picture/corps/<?= $item['image'] ?>" class="img-fluid">
                             </div>
                         </a>
@@ -93,7 +93,7 @@ if (isset($_GET['search'])) {
                     }
                     ?>
                     <li class="page-item">
-                        <a class="page-link" href="cong_ty.php?page=<?= $i + 1 > $trang ? $i : $i + 1 ?>">Next</a>
+                        <a class="page-link" href="cong_ty.php?page=<?= $i + 1 > $trang ? $trang : $i - 1 ?>">Next</a>
                     </li>
 
                 </ul>
