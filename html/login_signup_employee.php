@@ -162,6 +162,7 @@ function user_id_generator($role)
     <title>Đăng nhập nhà tuyển dụng | NiceJob</title>
     <link rel="stylesheet" href="../css/bootstrap-5.1.3-dist/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../css/login_employer.css">
+    <link rel="icon" href="../images/logo nicejob.png">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>

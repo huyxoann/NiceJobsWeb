@@ -162,6 +162,8 @@ function user_id_generator($role)
     <title>Đăng nhập nhà tuyển dụng | NiceJob</title>
     <link rel="stylesheet" href="../css/bootstrap-5.1.3-dist/css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="../css/login_employer.css">
+    <link rel="icon" href="../images/logo nicejob.png">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
@@ -235,25 +237,7 @@ function user_id_generator($role)
             container.classList.remove('right-panel-active');
         });
     </script>
-    <?php if (isset($notification)) { ?>
-        <div class="toast-container ">
-            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <img src="../images/Basic_red_dot.png" class="rounded me-2" alt="..." style="width: 20px;">
-                    <strong class="me-auto">NiceJob thông báo!</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    <div class="alert alert-danger" role="alert">
-                        <?php echo $notification ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php } ?>
-
-
-
+    <?php include('../html/modules/notification.php'); ?>
 </body>
 
 </html>

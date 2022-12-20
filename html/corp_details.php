@@ -25,6 +25,8 @@ if (isset($_GET['id_corp'])) {
     <link rel="stylesheet" href="../css/stylechung.css">
     <script src="../css/bootstrap.bundle.min.js"></script>
     <script src="../css/jquery-3.6.0.min.js"></script>
+    <link rel="icon" href="../images/logo nicejob.png">
+
 </head>
 <?php include('../includes/header.php') ?>
 <div id="main" class="container-fluid">

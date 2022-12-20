@@ -83,7 +83,7 @@ if (isset($_GET['search'])) {
         if (mysqli_num_rows($result_query_import_job) > 0) {
             while ($rows = mysqli_fetch_assoc($result_query_import_job)) { ?>
 
-                <div class="jobs_item col-md-4 item-hover d-flex">
+                <div class="jobs_item ">
                     <div class="logo-company">
                         <a href="../html/corp_details.php?id_corp=<?= $rows['corp_id'] ?>">
                             <img src="../html/picture/corps/<?= $rows['image'] ?>" alt="logo1">
@@ -119,17 +119,17 @@ if (isset($_GET['search'])) {
                 <nav aria-label="..." class="">
                     <ul class="pagination">
                         <li class="page-item">
-                            <a class="page-link" href="vieclam.php?page=<?= $i - 1 < 1 ? 1 : $i - 1; ?>">Previous</a>
+                            <a class="page-link" href="vieclam.php?page=1">Trang đầu</a>
                         </li>
                         <?php
-                        for ($i = 1; $i <= $trang; $i++) {
+                        for ($i = 1; $i < $trang; $i++) {
                         ?>
                             <li class="page-item"><a class="page-link" href="vieclam.php?page=<?= $i ?>"><?= $i ?></a></li>
                         <?php
                         }
                         ?>
                         <li class="page-item">
-                            <a class="page-link" href="vieclam.php?page=<?= $i + 1 > $trang ? $trang : $i - 1 ?>">Next</a>
+                            <a class="page-link" href="vieclam.php?page=<?= $trang - 1 ?>">Trang cuối</a>
                         </li>
 
                     </ul>

@@ -59,17 +59,18 @@ if (isset($_POST['add2'])) {
         <div>
             <h3 class="">Tin đã lưu</h3>
         </div>
+
         <div class="saved_list">
             <?php
             if (mysqli_num_rows($result_query_get_job) > 0) {
                 while ($data_jobs = mysqli_fetch_assoc($result_query_get_job)) { ?>
-                    <div class="jobs_item col-md border rounded p-2 d-flex justify-content-between">
-                        <div class="logo-company">
+                    <div class="jobs_item border rounded p-2 d-flex">
+                        <div class="logo-company col-md-3">
                             <a href="../html/corp_details.php?id_corp=<?= $data_jobs['corp_id'] ?>">
                                 <img src="../html/picture/corps/<?= $data_jobs['image'] ?>" alt="logo1">
                             </a>
                         </div>
-                        <div class="info-company">
+                        <div class="info-company col-md-6">
                             <a href="../html/job_detail.php?job_id=<?= $data_jobs['job_id'] ?>">
                                 <h4 class="name-job text-truncate">
                                     <?php echo $data_jobs['job_name'] ?>
@@ -118,18 +119,18 @@ if (isset($_POST['add2'])) {
                             ?>
                         </div>
                     </div>
-        </div>
-    <?php }
+                <?php }
             } else { ?>
-    <div class="alert alert-warning" role="alert">
-        Chưa có công việc nào được lưu!
-    </div>
-<?php }
-?>
-<div>
 
-</div>
-    </div>
+                <div class="alert alert-warning" role="alert">
+                    Chưa có công việc nào được lưu!
+                </div>
+            <?php }
+            ?>
+            <div>
+
+            </div>
+        </div>
     </div>
     <?php include_once('../includes/footer.php'); ?>
 </body>
