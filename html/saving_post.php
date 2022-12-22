@@ -3,7 +3,7 @@ require_once('../html/modules/connection.php');
 if (isset($_COOKIE['username'])) {
     $user_id = $_COOKIE['id_user'];
 
-    $query_get_job = "SELECT * FROM (((((((jobs INNER JOIN corporation ON jobs.corp_id = corporation.id_corp) INNER JOIN career ON career.career_id = jobs.career_id) INNER JOIN experience ON experience.exp_id = jobs.exp_id) INNER JOIN province ON province.province_id = jobs.job_id) INNER JOIN level ON level.level_id = jobs.level_id) INNER JOIN way_to_work ON way_to_work.way_to_work_id = jobs.way_to_work_id) INNER JOIN salary ON salary.salary_id = jobs.salary_id)INNER JOIN save ON jobs.job_id = save.job_id WHERE DATEDIFF(deadline, CURRENT_DATE()) > 0  ORDER BY created_at DESC";
+    $query_get_job = "SELECT * FROM (((((((jobs INNER JOIN corporation ON jobs.corp_id = corporation.id_corp) INNER JOIN career ON career.career_id = jobs.career_id) INNER JOIN experience ON experience.exp_id = jobs.exp_id) INNER JOIN province ON province.province_id = jobs.job_id) INNER JOIN level ON level.level_id = jobs.level_id) INNER JOIN way_to_work ON way_to_work.way_to_work_id = jobs.way_to_work_id) INNER JOIN salary ON salary.salary_id = jobs.salary_id)INNER JOIN save ON jobs.job_id = save.job_id WHERE DATEDIFF(deadline, CURRENT_DATE()) > 0 AND save.employee_id = '$user_id' ORDER BY created_at DESC";
     $result_query_get_job = mysqli_query($conn, $query_get_job);
 } else {
     header("Location: page404.php");

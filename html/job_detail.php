@@ -65,7 +65,9 @@ function date_formatting($date)
                         <h4><?php echo $rows['job_name'] ?></h4>
                     </div>
                     <div class="title_text">
-                        <h4><?php echo $rows['corp_name'] ?></h4>
+                        <a href="corp_details.php?id_corp=<?= $rows['corp_id'] ?>">
+                            <h4><?php echo $rows['corp_name'] ?></h4>
+                        </a>
                     </div>
                     <div>
                         <p>

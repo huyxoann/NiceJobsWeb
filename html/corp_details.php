@@ -65,7 +65,7 @@ if (isset($_GET['id_corp'])) {
         </div>
         <div class="info_jobs  mt-2 ">
             <div class="col-md-9">
-                <div class="job-listing box-white mt-4 mb-4 " style="border: 1px solid black;">
+                <div class="job-listing box-white mt-4 mb-4 border rounded p-2">
                     <div class="job-listing mo_ta border rounded p-2 ">
                         <h4 class="ps-3 text-start" style="border-left: 3px solid;">Tuyển dụng</h4>
                     </div>
@@ -76,7 +76,7 @@ if (isset($_GET['id_corp'])) {
                         // $GLOBALS['job_item'] = mysqli_fetch_assoc($query_run1);
                         foreach ($query_run1 as $job_item) {
                     ?>
-                            <div class="d-flex job-item  bg-highlight  result-job-hover alert-success mt-4 mb-4 " data-job-id="" data-job-position="2" data-box="BoxRecruitmentInCompany" style="border: 1px solid green;">
+                            <div class="d-flex job-item  bg-highlight  result-job-hover alert-success mt-4 mb-4 border rounded p-2" data-job-id="" data-job-position="2" data-box="BoxRecruitmentInCompany">
                                 <div class="flex-shrink-0 avatar align-middle">
                                     <a target="" href="#" class="company-logo">
                                         <img src="../html/picture/corps/<?= $corp_item['image'] ?>" title="<?= $job_item['job_name'] ?>" class="img-responsive cover-img ">

@@ -8,7 +8,7 @@ if (isset($_GET['search'])) {
     $province = $_GET['province'];
     $salary = $_GET['salary'];
 
-    $query_search = "SELECT * FROM (((((((jobs INNER JOIN corporation ON jobs.corp_id = corporation.id_corp) INNER JOIN career ON career.career_id = jobs.career_id) INNER JOIN experience ON experience.exp_id = jobs.exp_id) INNER JOIN province ON province.province_id = jobs.job_id) INNER JOIN level ON level.level_id = jobs.level_id) INNER JOIN way_to_work ON way_to_work.way_to_work_id = jobs.way_to_work_id) INNER JOIN salary ON salary.salary_id = jobs.salary_id) WHERE job_name LIKE '%$search_name%' AND DATEDIFF(deadline, CURRENT_DATE())>0 ORDER BY created_at DESC";
+    $query_search = "SELECT * FROM (((((((jobs INNER JOIN corporation ON jobs.corp_id = corporation.id_corp) INNER JOIN career ON career.career_id = jobs.career_id) INNER JOIN experience ON experience.exp_id = jobs.exp_id) INNER JOIN province ON province.province_id = jobs.job_id) INNER JOIN level ON level.level_id = jobs.level_id) INNER JOIN way_to_work ON way_to_work.way_to_work_id = jobs.way_to_work_id) INNER JOIN salary ON salary.salary_id = jobs.salary_id) WHERE job_name LIKE '%$search_name%'";
     if ($career != 0) {
         $query_search = $query_search . " AND jobs.career_id = '$career'";
     }
@@ -24,6 +24,7 @@ if (isset($_GET['search'])) {
     if ($salary != 0) {
         $query_search = $query_search . " AND jobs.salary_id = '$salary'";
     }
+    $query_search = $query_search . " AND DATEDIFF(deadline, CURRENT_DATE())>0 ORDER BY created_at DESC";
     $result_query_search = $conn->query($query_search); ?>
     <div class="title-ttd row">
         <h3>Kết quả tìm kiếm: </h3>

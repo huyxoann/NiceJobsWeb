@@ -67,7 +67,7 @@ require '../config/connectdb.php';
                         }
                         ?>
                         <tr>
-                            <td style="margin-left: 200px;padding-left: 100px;">
+                            <td style="margin-left: 200px;padding-left: 100px; display: flex; flex-direction: row;">
                                 <style type="text/css">
                                     ul.list-trang {
                                         padding: 0;
@@ -100,20 +100,26 @@ require '../config/connectdb.php';
 
 
                                 ?>
-                                <ul class="list-trang">
-                                    <?php
-                                    for ($i = 1; $i <= $trang; $i++) {
-                                    ?>
-                                        <li <?php if ($i == $page) {
-                                                echo 'style="background:brown;"';
-                                            } else {
-                                                echo '';
+                                <div class="d-flex justify-content-center">
+                                    <nav aria-label="..." class="">
+                                        <ul class="pagination">
+                                            <li class="page-item">
+                                                <a class="page-link" href="list-jobs.php?page=1">Trang đầu</a>
+                                            </li>
+                                            <?php
+                                            for ($i = 1; $i < $trang; $i++) {
+                                            ?>
+                                                <li class="page-item"><a class="page-link" href="list-jobs.php?page=<?= $i ?>"><?= $i ?></a></li>
+                                            <?php
                                             }
-                                            ?>><a href="list-jobs.php?trang=<?= $i ?>"><?= $i ?></a></li>
-                                    <?php
-                                    }
-                                    ?>
-                                </ul>
+                                            ?>
+                                            <li class="page-item">
+                                                <a class="page-link" href="list-jobs.php?page=<?= $trang - 1 ?>">Trang cuối</a>
+                                            </li>
+
+                                        </ul>
+                                    </nav>
+                                </div>
                             </td>
                         </tr>
 
