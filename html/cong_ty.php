@@ -16,6 +16,12 @@
 <?php include('../includes/header.php') ?>
 
 <div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+            <li class="breadcrumb-item active" aria-current="page">Công ty</li>
+        </ol>
+    </nav>
     <div class="">
         <div class="col-md-12">
             <form action="../html/cong_ty.php" method="get">

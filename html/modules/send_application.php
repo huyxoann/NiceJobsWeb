@@ -12,9 +12,13 @@ if (isset($_POST['apply'])) {
     $pre_href = isset($_COOKIE['pre_href']) ? $_COOKIE['pre_href'] : '';
     $employee_id = isset($_COOKIE['id_user']) ? $_COOKIE['id_user'] : '';
     $cv_selected = mysqli_real_escape_string($conn, $_POST['cv_selected']);
+
     $introduce = mysqli_real_escape_string($conn, $_POST['introduce']);
     $job_id = mysqli_real_escape_string($conn, $_POST['job_id']);
-
+    if ($cv_selected == '') {
+        $address_job_current = "../job_detail.php?job_id=" . $job_id;
+        header("Location: " . $address_job_current);
+    }
     $query_add_new_application = "INSERT INTO `application` (employee_id, cv_id, introduce, job_id) VALUES ('$employee_id', '$cv_selected', '$introduce', '$job_id')";
 
     $query_get_id_corp = "SELECT employer_id, job_name, job_id FROM jobs WHERE job_id = '$job_id'";
@@ -87,7 +91,8 @@ if (isset($_POST['apply'])) {
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail2->ErrorInfo}";
         }
-        header("Location: ../vieclam.php");
+        $address_job_current = "../job_detail.php?job_id=" . $job_id;
+        header("Location: " . $address_job_current);
     } else {
         echo $conn->error;
     }

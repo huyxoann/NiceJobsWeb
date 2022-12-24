@@ -17,7 +17,11 @@ require('../html/modules/connection.php');
     <script src="../css/bootstrap.bundle.min.js"></script>
     <script src="../css/jquery-3.6.0.min.js"></script>
 </head>
-<?php include('../includes/header.php') ?>
+<?php
+include('../includes/header.php');
+require('../html/modules/add_users_info.php');
+?>
+
 <div class="content container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">

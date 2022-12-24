@@ -26,19 +26,19 @@ require '../config/connectdb.php';
                     </thead>
                     <tbody>
                         <?php
-
-                        if (isset($_GET['trang'])) {
-                            $page = $_GET['trang'];
+                        $limit=5;
+                        if (isset($_GET['page'])) {
+                            $page = $_GET['page'];
                         } else {
                             $page = 1;
                         }
                         if ($page == '' || $page == 1) {
                             $begin = 0;
                         } else {
-                            $begin = ($page * 3) - 3;
+                            $begin = ($page * $limit) - $limit;
                         }
 
-                        $query = "SELECT corporation.id_corp, corporation.corp_name, corp_field.field_name, corporation.image FROM corporation INNER JOIN corp_field ON corporation.corp_field_id = corp_field.field_id LIMIT $begin,3 ";
+                        $query = "SELECT corporation.id_corp, corporation.corp_name, corp_field.field_name, corporation.image FROM corporation INNER JOIN corp_field ON corporation.corp_field_id = corp_field.field_id LIMIT $begin,$limit ";
                         $query_run = mysqli_query($conn, $query);
                         if (mysqli_num_rows($query_run) > 0) {
                             foreach ($query_run as $item) {
@@ -68,57 +68,6 @@ require '../config/connectdb.php';
                             echo "No records found";
                         }
                         ?>
-                        <tr>
-                            <td style="margin-left: 200px;padding-left: 100px;">
-                                <style type="text/css">
-                                    ul.list-trang {
-                                        padding: 0;
-                                        margin: 0;
-
-                                        list-style: none;
-                                    }
-
-                                    ul.list-trang li {
-                                        float: left;
-                                        padding: 5px 13px;
-                                        margin: 3px;
-                                        background-color: burlywood;
-                                        display: block;
-                                    }
-
-                                    ul.list-trang li a {
-                                        color: #000;
-                                        text-align: center;
-                                        text-decoration: none;
-
-                                    }
-                                </style>
-                                <!-- <p>Trang : </p> -->
-                                <?php
-                                $sql_trang = "SELECT * FROM `corporation`";
-                                $sql_trang_run = mysqli_query($conn, $sql_trang);
-                                $row_count = mysqli_num_rows($sql_trang_run);
-                                $trang = ceil($row_count / 3);
-
-
-                                ?>
-                                <ul class="list-trang">
-                                    <?php
-                                    for ($i = 1; $i <= $trang; $i++) {
-                                    ?>
-                                        <li <?php if ($i == $page) {
-                                                echo 'style="background:brown;"';
-                                            } else {
-                                                echo '';
-                                            }
-                                            ?>><a href="list-corporation.php?trang=<?= $i ?>"><?= $i ?></a></li>
-                                    <?php
-                                    }
-                                    ?>
-                                </ul>
-                            </td>
-                        </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -126,6 +75,32 @@ require '../config/connectdb.php';
         </div>
 
     </div>
+     <!-- <p>Phân trang : </p> -->
+     <nav  aria-label="Page navigation example mt-5">
+        <?php
+        $sql_page = "SELECT * FROM `corporation`";
+        $sql_page_run = mysqli_query($conn, $sql_page);
+        $row_count = mysqli_num_rows($sql_page_run);
+        $totoalPages = ceil($row_count / $limit);
+        ?>
+        <ul class="pagination justify-content-center">
+            <li class="page-item <?php if($page <= 1){ echo 'disabled'; } ?>">
+                <a class="page-link" href="list-corporation.php?page=<?= $page<=1 ? '' : $page - 1 ?>">&laquo;</a>
+            </li>
+            <?php
+            for ($i = 1; $i <= $totoalPages; $i++) {
+            ?>
+                <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
+                    <a class="page-link" href="list-corporation.php?page=<?= $i ?>"><?= $i ?></a>
+                </li>
+            <?php
+            }
+            ?>
+            <li class="page-item <?php if($page >= $totoalPages) { echo 'disabled'; } ?>">
+                <a class="page-link" href="list-corporation.php?page=<?= $page >= $totoalPages ? '#': $page + 1 ?>">&raquo;</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 </div>
 

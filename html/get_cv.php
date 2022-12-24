@@ -27,7 +27,7 @@ if (mysqli_num_rows($result) > 0) {
                 </a>
                 <div class="action_button">
                     <!-- <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editCV" data-cv-name="<?= $rows_cv_edit['cv_name'] ?>" data-cv-filename="<?= $rows_cv_edit['file_name'] ?>" data-cv-career="<?= $rows_cv_edit['career_id'] ?>" data-cv-exp="<?= $rows_cv_edit['exp_id'] ?>" data-cv-id="<?= $rows_cv_edit['id_cv'] ?>" data-cv-pdf="<?= $rows_cv_edit['filename'] ?>">Sửa</button> -->
-                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCV" data-cv-name="<?= $rows_cv_edit['cv_name'] ?>" data-cv-id="<?= $rows_cv_edit['cv-id'] ?>">Xóa</button>
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCV" data-cv-name="<?= $rows_cv_edit['cv_name'] ?>" data-cv-id="<?= $rows_cv_edit['cv_id'] ?>">Xóa</button>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@ if (mysqli_num_rows($result) > 0) {
 } else { ?>
     <div class="alert alert-dark" role="alert">
         Không có CV nào được tạo!
-    </div>';
+    </div>
 <?php }
 ?>
 <!-- Modal SHOW CV-->
@@ -68,7 +68,7 @@ if (mysqli_num_rows($result) > 0) {
     })
 </script>
 <!-- Modal EDIT CV -->
-<div class="modal fade" id="editCV" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="editCV" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="../html/modules/modify_cv.php" method="post" enctype="multipart/form-data">
@@ -101,8 +101,8 @@ if (mysqli_num_rows($result) > 0) {
             </form>
         </div>
     </div>
-</div>
-<script>
+</div> -->
+<!-- <script>
     $('#editCV').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var cv_name = button.data('cv-name')
@@ -119,7 +119,7 @@ if (mysqli_num_rows($result) > 0) {
         modal.find('.modal-body #id_cv').val(cv_exp)
         modal.find('.modal-body #filename').val(cv_filename)
     })
-</script>
+</script> -->
 <!-- DELETE CV -->
 <div class="modal fade" id="deleteCV" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -135,7 +135,7 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-danger">Xóa</button>
+                    <input type="submit" class="btn btn-danger" name="delete_cv" value="Xóa">
                 </div>
             </div>
         </form>

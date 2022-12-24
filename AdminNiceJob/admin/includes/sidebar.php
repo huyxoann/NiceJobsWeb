@@ -38,7 +38,7 @@ $page =  substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") +
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">business</i>
           </div>
-          <span class="nav-link-text ms-1">list company</span>
+          <span class="nav-link-text ms-1">list Corporation</span>
         </a>
       </li>
 
@@ -47,7 +47,7 @@ $page =  substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], "/") +
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">person</i>
           </div>
-          <span class="nav-link-text ms-1">User admin</span>
+          <span class="nav-link-text ms-1">User Admin</span>
         </a>
       </li>
 

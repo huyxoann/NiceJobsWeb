@@ -6,6 +6,11 @@ if (isset($_GET['job_id'])) {
     $result = $conn->query($query_get_job_data);
     $employee_id = isset($_COOKIE['id_user']) ? $_COOKIE['id_user'] : '';
     $query_get_cv_exist = "SELECT employee_id, job_id FROM application WHERE employee_id = '$employee_id' AND job_id = '$job_id'";
+
+    // $query_get_num_application = "SELECT num_of_recruit FROM application INNER JOIN jobs ON jobs.job_id = application.job_id WHERE job_id = '$job_id'";
+    // $result_query_get_num_application = mysqli_query($conn, $query_get_num_application);
+    // $num_application = mysqli_fetch_assoc($result_query_get_num_application);
+
     if (mysqli_num_rows($result) > 0) {
         $GLOBALS['rows'] = mysqli_fetch_assoc($result);
     }
@@ -274,6 +279,15 @@ function date_formatting($date)
                             <input type="submit" class="btn btn-primary" name="apply" value="Ứng tuyển">
                         </div>
                     </form>
+                    <!-- <?php } elseif (mysqli_num_rows($result_query_get_num_application) >= $num_application['num_of_recruit']) { ?>
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h4 class="text-danger"></h4>
+                        <small>Note: Chỉ tài khoản người ứng tuyển mới thực hiện hành động này!</small>
+                        <p>Click vào <a href="../html/sign_out.php">ĐÂY</a> để nhập với tư cách người ứng tuyển.</p>
+                    </div> -->
                 <?php } else { ?>
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

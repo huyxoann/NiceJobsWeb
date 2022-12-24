@@ -34,5 +34,15 @@ if (isset($_POST['change'])) {
         }
     }
 }
-if (isset($_POST['delete'])) {
+if (isset($_POST['delete_cv'])) {
+    $cv_id = isset($_POST['cv_id']) ? $_POST['cv_id'] : "";
+    echo $cv_id . "<br>";
+    $query_delete_cv = "DELETE FROM cv WHERE cv_id = '$cv_id'";
+    echo 2;
+    if ($conn->query($query_delete_cv)) {
+        echo 3;
+    }
+    echo 4;
+    header('Location: ../hoso_cv.php');
 }
+echo 5;

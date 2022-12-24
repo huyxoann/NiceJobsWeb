@@ -72,14 +72,13 @@
     </div>
     <div class="collapse" id="menuChoose">
         <ul>
-            <li><a href="../html/thongtinweb.php">Về chúng tôi</a></li>
-            <li><a href="../html/vieclam.php">Việc làm</a></li>
-            <li><a href="../html/cong_ty.php">Công ty</a></li>
+            <li class="pe-2"><a href="../html/thongtinweb.php">Về chúng tôi</a></li>
+            <li class="pe-2"><a href="../html/vieclam.php">Việc làm</a></li>
+            <li class="pe-2"><a href="../html/cong_ty.php">Công ty</a></li>
             <!-- <li><a href="../html/hoso_cv.php">Hồ sơ CV</a></li> -->
         </ul>
 
         <button type="button" class="btn btn-primary me-2 buttonHiden"><a href="../html/login_signup_employee.php" style="color: #f9f9f9;">Tìm việc ngay!</a></button>
-        <br>
         <br>
         <button type="button" class="btn btn-primary me-2 buttonHiden"><a href="../html/login_signup_employer.php" style="color: #f9f9f9;">Đăng tuyển và tìm nhân sự</a></button>
     </div>
